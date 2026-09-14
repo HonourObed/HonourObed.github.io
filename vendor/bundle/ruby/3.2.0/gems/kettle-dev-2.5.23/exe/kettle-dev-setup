@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# vim: set syntax=ruby
+
+# kettle-dev-setup has been replaced by kettle-jem setup.
+# All setup and templating functionality has moved to the kettle-jem gem.
+
+repo_lib = File.expand_path("../lib", __dir__)
+$LOAD_PATH.unshift(repo_lib) if File.directory?(repo_lib) && !$LOAD_PATH.include?(repo_lib)
+
+require "kettle/dev/executable_version"
+
+script_basename = File.basename(__FILE__)
+Kettle::Dev::ExecutableVersion.print_and_exit!(script_basename, ARGV)
+Kettle::Dev::ExecutableVersion.print_header(script_basename)
+
+warn <<~MSG
+  kettle-dev-setup has been removed.
+  Setup and templating functionality has moved to the kettle-jem gem.
+
+  Please install kettle-jem and use kettle-jem setup instead:
+    gem install kettle-jem
+    kettle-jem setup
+MSG
+exit 1

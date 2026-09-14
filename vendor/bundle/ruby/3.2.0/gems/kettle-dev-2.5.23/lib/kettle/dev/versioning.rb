@@ -1,0 +1,102 @@
+# frozen_string_literal: true
+
+module Kettle
+  module Dev
+    # Shared helpers for version detection and bump classification.
+    module Versioning
+      module_function
+
+      # Detects a unique VERSION constant declared under lib/**/version.rb,
+      # or in K_CHANGELOG_VERSION_FILE when a monorepo/root changelog needs
+      # to point at a representative package version file.
+      # @param root [String] project root
+      # @param override [String, nil] explicit version supplied by caller
+      # @return [String] version string
+      def detect_version(root, override: nil)
+        explicit = normalize_explicit_version(override)
+        return explicit if explicit
+
+        candidates = version_file_candidates(root)
+        versions = candidates.map do |path|
+          content = File.read(path)
+          m = content.match(/VERSION\s*=\s*(["'])([^"']+)\1/)
+          next unless m
+
+          m[2]
+        end.compact
+        abort!("VERSION constant not found in #{root}/lib/**/version.rb") if versions.none?
+        abort!("Multiple VERSION constants found to be out of sync (#{versions.inspect}) in #{root}/lib/**/version.rb") unless versions.uniq.length == 1
+        versions.first
+      end
+
+      def normalize_explicit_version(value)
+        version = value.to_s.strip
+        return nil if version.empty?
+
+        Gem::Version.new(version)
+        version
+      rescue ArgumentError
+        abort!("Invalid version override: #{version.inspect}")
+      end
+
+      def version_file_candidates(root)
+        override = ENV.fetch("K_CHANGELOG_VERSION_FILE", "").to_s.strip
+        unless override.empty?
+          path = File.expand_path(override, root)
+          abort!("K_CHANGELOG_VERSION_FILE does not exist: #{override}") unless File.file?(path)
+
+          return [path]
+        end
+
+        declared_path = Kettle::Dev::GemSpecReader.declared_version_file_path(root)
+        return [declared_path] if declared_path
+
+        candidates = Dir[File.join(root, "lib", "**", "version.rb")]
+        abort!("Could not find version.rb under lib/**.") if candidates.empty?
+        candidates
+      end
+
+      # Classify the bump type from prev -> cur.
+      # EPIC is a MAJOR > 1000.
+      # @param prev [String] previous released version
+      # @param cur [String] current version (from version.rb)
+      # @return [Symbol] one of :epic, :major, :minor, :patch, :same, :downgrade
+      def classify_bump(prev, cur)
+        pv = Gem::Version.new(prev)
+        cv = Gem::Version.new(cur)
+        return :same if cv == pv
+        return :downgrade if cv < pv
+
+        pmaj, pmin, ppatch = (pv.segments + [0, 0, 0])[0, 3]
+        cmaj, cmin, cpatch = (cv.segments + [0, 0, 0])[0, 3]
+
+        if cmaj > pmaj
+          return :epic if cmaj && cmaj > 1000
+
+          :major
+        elsif cmin > pmin
+          :minor
+        elsif cpatch > ppatch
+          :patch
+        else
+          # Fallback; should be covered by :same above, but in case of weird segment shapes
+          :same
+        end
+      end
+
+      # Whether MAJOR is an EPIC version (strictly > 1000)
+      # @param major [Integer]
+      # @return [Boolean]
+      def epic_major?(major)
+        major && major > 1000
+      end
+
+      # Abort via ExitAdapter if available; otherwise Kernel.abort
+      # @param msg [String]
+      # @return [void]
+      def abort!(msg)
+        Kettle::Dev::ExitAdapter.abort(msg)
+      end
+    end
+  end
+end

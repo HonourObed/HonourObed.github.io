@@ -1,0 +1,94 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# vim: set syntax=ruby
+
+# Immediate, unbuffered output
+$stdout.sync = true
+$stderr.sync = true
+
+# Do not rely on Bundler; allow running in repos that do not depend on kettle-dev
+# Ensure RubyGems is available for 'require' lookups
+begin
+  require "rubygems"
+rescue LoadError
+  # Older Rubies always have rubygems; continue anyway
+end
+
+script_basename = File.basename(__FILE__)
+repo_lib = File.expand_path("../lib", __dir__)
+$LOAD_PATH.unshift(repo_lib) if File.directory?(repo_lib) && !$LOAD_PATH.include?(repo_lib)
+
+begin
+  # Standard library
+  require "erb"
+
+  begin
+    require "kettle/dev"
+  rescue LoadError
+    # Fallback: allow running from a checkout without bundler by adding ./lib to the load path
+    $LOAD_PATH.unshift(repo_lib) unless $LOAD_PATH.include?(repo_lib)
+    require "kettle/dev"
+  end
+  require "kettle/dev/executable_version"
+  Kettle::Dev::ExecutableVersion.print_and_exit!(script_basename, ARGV)
+  Kettle::Dev::ExecutableVersion.print_header(script_basename)
+rescue LoadError => e
+  warn("#{script_basename}: could not load dependency: #{e.class}: #{e.message}")
+  warn("Hint: Install the kettle-dev gem (`gem install kettle-dev`) or add it to your Gemfile. Bundler is not required for this script.")
+  exit(1)
+end
+
+# ENV variable control (set in .envrc, or .env.local)
+# BRANCH_RULE_TYPE = jira, or another type of branch rule validation, or false to disable
+# FOOTER_APPEND = true/false append commit message footer
+BRANCH_RULES = {
+  "jira" => /^(?<story_type>hotfix|bug|feature|candy)\/(?<story_id>\d{8,})-.+\Z/
+}
+# Ruby 2.3 compatibility: String#casecmp? is not available; use casecmp.zero?
+BRANCH_RULE_TYPE = (validate = ENV.fetch("GIT_HOOK_BRANCH_VALIDATE", "false")) && !(validate.respond_to?(:casecmp?) ? validate.casecmp?("false") : (validate.casecmp("false").zero?)) && validate
+
+# Called the "JIRA pattern", because of traditional use with JIRA.
+if (branch_rule = BRANCH_RULES[BRANCH_RULE_TYPE])
+  # branches should be named like:
+  #	<story_type>/<story_id>-explosion-in-the-fudge-factory-spec-suite-fix
+  #	where story type is one of "hotfix", "bug", "feature", "candy"
+  #
+  branch = `git branch 2> /dev/null | grep -e ^* | awk '{print $2}'`
+  match_data = branch.match(branch_rule)
+  # NOTE: `match` will return nil if match fails, otherwise an instance of MatchData.
+  # If not nil then we are assured matches for both regex capture groups
+  # match_data_or_nil[:story_type] will be one of "hotfix", "bug", "feature", "candy"
+  # match_data_or_nil[:story_id] will be a numeric string
+
+  if !match_data.nil?
+    commit_msg = File.read(ARGV[0])
+    unless commit_msg.include?(match_data[:story_id])
+      commit_msg = <<~EOS
+        #{commit_msg.strip}
+        [#{match_data[:story_type]}][#{match_data[:story_id]}]
+      EOS
+      File.open(ARGV[0], "w") do |file|
+        file.print(commit_msg)
+      end
+    end
+  end
+else
+  # puts "No branch rule configured (set GIT_HOOK_BRANCH_VALIDATE=jira to enforce rules for jira style branch names)"
+end
+
+begin
+  Kettle::Dev::GitCommitFooter.render(*ARGV)
+rescue LoadError => e
+  warn("#{script_basename}: could not load dependency: #{e.class}: #{e.message}")
+  warn(e.backtrace.join("\n")) if ENV["DEBUG"]
+  exit(1)
+rescue SystemExit => e
+  # Preserve exit status, but ensure at least a newline so shells don't show an empty line only.
+  warn("#{script_basename}: exited (status=#{e.status}, msg=#{e.message})") if e.status != 0
+  raise
+rescue => e
+  warn("#{script_basename}: unexpected error: #{e.class}: #{e.message}")
+  warn(e.backtrace.join("\n"))
+  exit(1)
+end

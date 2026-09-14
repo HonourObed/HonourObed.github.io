@@ -1,0 +1,156 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# vim: set syntax=ruby
+
+# kettle-gh-release: Create a GitHub release for a gem version
+# - Extracted from kettle-release step 18
+# - Useful when the main release succeeded but GitHub release creation failed
+# - Requires GITHUB_TOKEN with repo:public_repo (classic) or contents:write scope
+
+# Immediate, unbuffered output
+$stdout.sync = true
+$stderr.sync = true
+
+# Do not rely on Bundler; allow running in repos that do not depend on kettle-dev
+# Ensure RubyGems is available for 'require' lookups
+begin
+  require "rubygems"
+rescue LoadError
+  # Older Rubies always have rubygems; continue anyway
+end
+
+script_basename = File.basename(__FILE__)
+repo_lib = File.expand_path("../lib", __dir__)
+$LOAD_PATH.unshift(repo_lib) if File.directory?(repo_lib) && !$LOAD_PATH.include?(repo_lib)
+
+begin
+  require "kettle/dev"
+  require "kettle/dev/executable_version"
+  Kettle::Dev::ExecutableVersion.print_and_exit!(script_basename, ARGV)
+  Kettle::Dev::ExecutableVersion.print_header(script_basename)
+rescue LoadError => e
+  warn("#{script_basename}: could not load dependency: #{e.class}: #{e.message}")
+  warn("Hint: Ensure the host project has kettle-dev as a dependency and run bundle install.")
+  exit(1)
+end
+
+# Always execute when this file is loaded (e.g., via a Bundler binstub).
+# Do not guard with __FILE__ == $PROGRAM_NAME because binstubs use Kernel.load.
+if ARGV.include?("-h") || ARGV.include?("--help")
+  puts <<~USAGE
+    Usage: #{script_basename} [--release-version VERSION|version=<VERSION>] [--check|--update] [--events] [--allow-unpublished]
+
+    Creates a GitHub release for a gem version.
+
+    This is step 18 of the kettle-release flow, extracted as a standalone script.
+    Useful when the main release to RubyGems succeeded but GitHub release creation
+    failed (e.g., due to token issues or network problems).
+
+    Arguments:
+      --release-version VERSION   # Explicit version (e.g., --release-version 1.2.3)
+      version=<VERSION>           # Backward-compatible explicit version form
+      --check                     # Verify RubyGems, remote tag, changelog, and token without creating a release
+      --update                    # Update an existing GitHub Release title/body from CHANGELOG.md
+      --events                    # Emit the final result as one NDJSON event
+      --allow-unpublished         # Skip the RubyGems publication requirement (for intentionally non-RubyGems projects)
+
+    Environment:
+      GITHUB_TOKEN / GH_TOKEN     # Required; needs repo:public_repo (classic) or contents:write scope
+      DEBUG=true                  # Print backtraces on errors
+
+    Examples:
+      #{script_basename} --check --release-version 2.0.0
+      #{script_basename} --release-version 2.0.0
+      #{script_basename} version=2.0.0      # backward-compatible form
+  USAGE
+  exit 0
+end
+
+check_only = ARGV.delete("--check")
+update_only = ARGV.delete("--update")
+if check_only && update_only
+  warn("#{script_basename}: --check and --update cannot be combined")
+  exit 1
+end
+events = ARGV.delete("--events")
+allow_unpublished = ARGV.delete("--allow-unpublished")
+version_arg = ARGV.find { |arg| arg.start_with?("version=") }
+ARGV.delete(version_arg) if version_arg
+explicit_version = version_arg&.split("=", 2)&.last&.strip
+
+if (index = ARGV.index("--release-version"))
+  explicit_version = ARGV.fetch(index + 1, nil).to_s.strip
+  ARGV.slice!(index, 2)
+end
+
+unless ARGV.empty?
+  warn("#{script_basename}: unexpected argument(s): #{ARGV.join(" ")}")
+  exit 1
+end
+
+if !explicit_version.nil? && explicit_version.empty?
+  warn("#{script_basename}: --release-version requires a version")
+  exit 1
+end
+
+begin
+  cli = Kettle::Dev::ReleaseCLI.new(start_step: 18)
+  version = explicit_version || cli.send(:detect_version)
+  result = cli.send(:github_release_backfill_check, version, require_rubygems: !allow_unpublished)
+
+  if events
+    action = if check_only
+      "check"
+    elsif update_only
+      "update"
+    else
+      "create"
+    end
+    puts JSON.generate(
+      event_version: 1,
+      type: "github_release",
+      action: action,
+      status: result.fetch("ok") ? "ok" : "failed",
+      **result
+    )
+  elsif result.fetch("ok")
+    puts "GitHub release prerequisites satisfied for #{result.fetch("tag")}."
+  else
+    warn("GitHub release prerequisites failed for #{result.fetch("tag")}:")
+    result.fetch("diagnostics").each { |diagnostic| warn("  - #{diagnostic}") }
+  end
+
+  exit 1 unless result.fetch("ok")
+  exit 0 if check_only
+
+  created, message = if update_only
+    cli.send(:maybe_update_github_release!, version)
+  else
+    cli.send(:maybe_create_github_release!, version)
+  end
+  if events
+    puts JSON.generate(
+      event_version: 1,
+      type: "github_release",
+      action: update_only ? "update" : "create",
+      status: created ? "ok" : "failed",
+      version: result.fetch("version"),
+      tag: result.fetch("tag"),
+      result: message
+    )
+  end
+  exit(created ? 0 : 1)
+rescue LoadError => e
+  warn("#{script_basename}: could not load dependency: #{e.class}: #{e.message}")
+  warn(Array(e.backtrace).join("\n")) if ENV["DEBUG"]
+  exit(1)
+rescue SystemExit => e
+  # Preserve exit status, but ensure at least a newline so shells don't show an empty line only.
+  warn("#{script_basename}: exited (status=#{e.status}, msg=#{e.message})") if e.status != 0
+  raise
+rescue => e
+  warn("#{script_basename}: unexpected error: #{e.class}: #{e.message}")
+  warn(Array(e.backtrace).join("\n"))
+  exit(1)
+end

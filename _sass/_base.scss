@@ -320,3 +320,47 @@ b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a,
   -webkit-transition: $global-transition;
   transition: $global-transition;
 }
+
+/* ==========================================================================
+   Citation and publication tags
+   ========================================================================== */
+
+.pub-tag {
+  display: inline-block;
+  color: $burgundy;
+  font-weight: bold;
+  font-size: $type-size-6;
+  margin-right: 0.6em;
+  min-width: 2.5em;
+}
+
+.pub-entry {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.2em;
+  line-height: 1.5;
+}
+
+.pub-entry .pub-content {
+  flex: 1;
+}
+
+.pub-entry .pub-content strong {
+  display: block;
+  margin-bottom: 0.15em;
+}
+
+.pub-entry .pub-content .pub-venue {
+  color: $gray;
+  font-size: $type-size-6;
+}
+
+/* Section headings accent */
+h1 {
+  border-bottom: 2px solid $burgundy;
+  padding-bottom: 0.2em;
+}
+
+h2 {
+  color: $burgundy;
+}

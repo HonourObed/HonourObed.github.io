@@ -1,0 +1,81 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# vim: set syntax=ruby
+
+# kettle-dvcs: Normalize git remotes across GitHub, GitLab, and Codeberg
+# - Aligns/creates remotes for the three forges and an 'all' remote
+# - Attempts fetch from each forge and updates README federation summary
+
+# Immediate, unbuffered output
+$stdout.sync = true
+$stderr.sync = true
+
+# Do not rely on Bundler; allow running in repos that do not depend on kettle-dev
+# Ensure RubyGems is available for 'require' lookups
+begin
+  require "rubygems"
+rescue LoadError
+  # Older Rubies always have rubygems; continue anyway
+end
+
+script_basename = File.basename(__FILE__)
+repo_lib = File.expand_path("../lib", __dir__)
+$LOAD_PATH.unshift(repo_lib) if File.directory?(repo_lib) && !$LOAD_PATH.include?(repo_lib)
+
+begin
+  require "kettle/dev"
+  require "kettle/dev/executable_version"
+  Kettle::Dev::ExecutableVersion.print_and_exit!(script_basename, ARGV)
+  Kettle::Dev::ExecutableVersion.print_header(script_basename)
+rescue LoadError => e
+  warn("#{script_basename}: could not load dependency: #{e.class}: #{e.message}")
+  warn("Hint: Ensure the host project has kettle-dev as a dependency and run bundle install.")
+  exit(1)
+end
+
+# Always execute when this file is loaded (e.g., via a Bundler binstub).
+# Do not guard with __FILE__ == $PROGRAM_NAME because binstubs use Kernel.load.
+if ARGV.include?("-h") || ARGV.include?("--help")
+  puts <<~USAGE
+    Usage: kettle-dvcs [options] [ORG] [REPO]
+
+    Normalizes git remotes across GitHub, GitLab, and Codeberg.
+
+    Options:
+      --origin [github|gitlab|codeberg]   Choose origin forge (default: github)
+      --protocol [ssh|https]              URL scheme (default: ssh)
+      --github-name NAME                  Remote name for GitHub when not origin (default: gh)
+      --gitlab-name NAME                  Remote name for GitLab (default: gl)
+      --codeberg-name NAME                Remote name for Codeberg (default: cb)
+      --status                            Fetch remotes; show ahead/behind vs origin/main
+      --force                             Non-interactive; accept defaults
+
+    Behavior:
+      - Ensures remotes exist and have consistent URLs
+      - Creates an 'all' remote that fetches from origin only and pushes to all three
+      - Prints `git remote -v`
+      - Fetches each forge to detect availability and updates README accordingly
+
+    Environment:
+      KETTLE_DEV_DISABLE_GIT_GEM=true     # force CLI git backend even if 'git' gem present
+      DEBUG=true                           # print backtraces on errors
+  USAGE
+  exit 0
+end
+
+begin
+  # Pass ARGV through; DvcsCLI does option parsing
+  exit(Kettle::Dev::DvcsCLI.new(ARGV).run!)
+rescue LoadError => e
+  warn("#{script_basename}: could not load dependency: #{e.class}: #{e.message}")
+  warn(e.backtrace.join("\n")) if ENV["DEBUG"]
+  exit(1)
+rescue SystemExit => e
+  warn("#{script_basename}: exited (status=#{e.status}, msg=#{e.message})") if e.status != 0
+  raise
+rescue => e
+  warn("#{script_basename}: unexpected error: #{e.class}: #{e.message}")
+  warn(e.backtrace.join("\n"))
+  exit(1)
+end

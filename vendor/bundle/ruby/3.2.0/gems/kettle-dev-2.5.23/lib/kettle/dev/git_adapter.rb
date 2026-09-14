@@ -1,0 +1,403 @@
+# frozen_string_literal: true
+
+require "open3"
+
+module Kettle
+  module Dev
+    # Minimal Git adapter used by kettle-dev to avoid invoking live shell commands
+    # directly from the higher-level library code. In tests, mock this adapter's
+    # methods to prevent any real network or repository mutations.
+    #
+    # Behavior:
+    # - Prefer the 'git' gem when available.
+    # - If the 'git' gem is not present (LoadError), fall back to shelling out to
+    #   the system `git` executable for the small set of operations we need.
+    #
+    # Public API is intentionally small and only includes what we need right now.
+    class GitAdapter
+      # Determine whether the working tree is clean (no unstaged, staged, or untracked changes).
+      # @return [Boolean] true if clean, false if any changes or on error
+      def clean?
+        if @backend == :gem
+          begin
+            status = @git.status
+            # git gem's Status responds to changed, added, deleted, untracked, etc.
+            status.changed.empty? && status.added.empty? && status.deleted.empty? && status.untracked.empty?
+          rescue => e
+            Kettle::Dev.debug_error(e, __method__)
+            false
+          end
+        else
+          out, st = git_capture2("status", "--porcelain")
+          st.success? && out.strip.empty?
+        end
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        false
+      end
+
+      # Execute a git command and capture its stdout and success flag.
+      # This is a generic escape hatch used by higher-level code for read-only
+      # queries that aren't covered by the explicit adapter API. Tests can stub
+      # this method to avoid shelling out.
+      # @param args [Array<String>]
+      # @return [Array<(String, Boolean)>] [output, success]
+      def capture(args)
+        out, status = git_capture2(*args)
+        [out.strip, status.success?]
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        ["", false]
+      end
+
+      # Stage all changes in the repository.
+      #
+      # @return [Boolean]
+      def add_all
+        git_system("add", "-A")
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        false
+      end
+
+      # Stage selected paths.
+      #
+      # @param paths [Array<String>]
+      # @return [Boolean]
+      def add_paths(paths)
+        git_system("add", "--", *Array(paths).map(&:to_s))
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        false
+      end
+
+      # Commit all staged/tracked changes with a message.
+      #
+      # @param message [String]
+      # @return [Boolean]
+      def commit_all(message)
+        git_system("commit", "-am", message.to_s)
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        false
+      end
+
+      # Amend the current commit without changing its message.
+      #
+      # @return [Boolean]
+      def commit_amend_no_edit
+        git_system("commit", "--amend", "--no-edit")
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        false
+      end
+
+      # Return whether a tracked path has no unstaged changes.
+      #
+      # @param path [String]
+      # @return [Boolean]
+      def diff_quiet?(path)
+        _out, status = git_capture2("diff", "--quiet", "--", path.to_s)
+        status.success?
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        false
+      end
+
+      # Return whether a tracked path has no changes compared with HEAD.
+      #
+      # @param path [String]
+      # @return [Boolean]
+      def diff_head_quiet?(path)
+        _out, status = git_capture2("diff", "--quiet", "HEAD", "--", path.to_s)
+        status.success?
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        false
+      end
+
+      # Create an annotated tag.
+      #
+      # @param tag [String]
+      # @param message [String]
+      # @return [Boolean]
+      def tag_annotated(tag, message)
+        git_system("tag", "-a", tag.to_s, "-m", message.to_s)
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        false
+      end
+
+      # Soft reset to a ref.
+      #
+      # @param ref [String]
+      # @return [Boolean]
+      def reset_soft(ref)
+        git_system("reset", "--soft", ref.to_s)
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        false
+      end
+
+      # Create a new adapter rooted at the current working directory.
+      # @return [void]
+      def initialize(root = Dir.pwd)
+        @root = File.expand_path(root.to_s)
+        # Allow users/CI to opt out of using the 'git' gem even when available.
+        # Set KETTLE_DEV_DISABLE_GIT_GEM to a truthy value ("1", "true", "yes") to force CLI backend.
+        env_val = ENV["KETTLE_DEV_DISABLE_GIT_GEM"]
+        # Ruby 2.3 compatibility: String#match? was added in 2.4; use Regexp#=== / =~ instead
+        disable_gem = env_val && !!(/\A(1|true|yes)\z/i =~ env_val)
+        if disable_gem
+          @backend = :cli
+        else
+          Kernel.require "git"
+          @backend = :gem
+          @git = ::Git.open(@root)
+        end
+      rescue LoadError => e
+        Kettle::Dev.debug_error(e, __method__, backtrace: false)
+        # Optional dependency: fall back to CLI
+        @backend = :cli
+      rescue => e
+        raise Kettle::Dev::Error, "Failed to open git repository: #{e.message}"
+      end
+
+      # Push a branch to a remote.
+      # @param remote [String, nil] remote name (nil means default remote)
+      # @param branch [String] branch name (required)
+      # @param force [Boolean] whether to force push
+      # @return [Boolean] true when the push is reported successful
+      def push(remote, branch, force: false)
+        if @backend == :gem
+          begin
+            if remote
+              @git.push(remote, branch, force: force)
+            else
+              # Default remote according to repo config
+              @git.push(nil, branch, force: force)
+            end
+            true
+          rescue => e
+            Kettle::Dev.debug_error(e, __method__)
+            false
+          end
+        else
+          args = ["git", "push"]
+          args << "--force" if force
+          if remote
+            args << remote.to_s << branch.to_s
+          end
+          system(*args)
+        end
+      end
+
+      # Push all tags to a remote.
+      # Notes:
+      # - The ruby-git gem does not provide a stable API for pushing all tags across
+      #   versions, so we intentionally shell out to `git push --tags` for both
+      #   backends. Tests should stub this method in higher-level code to avoid
+      #   mutating any repositories.
+      #
+      # @param remote [String, nil] The remote name. When nil or empty, uses the
+      #   repository's default remote (same behavior as running `git push --tags`)
+      #   which typically uses the current branch's upstream.
+      # @return [Boolean] true if the system call reports success; false on failure
+      def push_tags(remote)
+        if @backend == :gem
+          # The ruby-git gem does not expose a dedicated API for "--tags" consistently across versions.
+          # Use a shell fallback even when the gem backend is active. Tests should stub this method.
+          if remote && !remote.to_s.empty?
+            git_system("push", remote.to_s, "--tags")
+          else
+            git_system("push", "--tags")
+          end
+        elsif remote && !remote.to_s.empty?
+          git_system("push", remote.to_s, "--tags")
+        else
+          git_system("push", "--tags")
+        end
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        false
+      end
+
+      # @return [String, nil] current branch name, or nil on error
+      def current_branch
+        if @backend == :gem
+          @git.current_branch
+        else
+          out, status = git_capture2("rev-parse", "--abbrev-ref", "HEAD")
+          status.success? ? out.strip : nil
+        end
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        nil
+      end
+
+      # Return the list of files currently tracked by git.
+      #
+      # @return [Array<String>] relative paths of tracked files, empty on error
+      def ls_files
+        if @backend == :gem
+          begin
+            @git.ls_files.keys
+          rescue => e
+            Kettle::Dev.debug_error(e, __method__)
+            []
+          end
+        else
+          out, status = git_capture2("ls-files")
+          status.success? ? out.split(/\r?\n/).reject(&:empty?) : []
+        end
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        []
+      end
+
+      # Return the raw `git blame --porcelain` output for a single tracked file.
+      #
+      # Both backends shell out directly because the `git` gem does not provide
+      # a stable porcelain-blame interface. Callers that need only the output
+      # string (e.g. +CopyrightCollector+) should stub this method in specs.
+      #
+      # @param path [String] path to the file, relative to the repository root
+      # @return [String] raw porcelain blame output, or "" on error / untracked file
+      def blame_porcelain(path)
+        out, status = git_capture2("blame", "--porcelain", path.to_s)
+        status.success? ? out : ""
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        ""
+      end
+
+      # @return [Array<String>] list of remote names
+      def remotes
+        if @backend == :gem
+          @git.remotes.map(&:name)
+        else
+          out, status = git_capture2("remote")
+          status.success? ? out.split(/\r?\n/).map(&:strip).reject(&:empty?) : []
+        end
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        []
+      end
+
+      # @return [Hash{String=>String}] remote name => fetch URL
+      def remotes_with_urls
+        if @backend == :gem
+          @git.remotes.each_with_object({}) do |r, h|
+            begin
+              h[r.name] = r.url
+            rescue => e
+              Kettle::Dev.debug_error(e, __method__)
+              # ignore
+            end
+          end
+        else
+          out, status = git_capture2("remote", "-v")
+          return {} unless status.success?
+
+          urls = {}
+          out.each_line do |line|
+            # Example: origin https://github.com/me/repo.git (fetch)
+            if line =~ /^(\S+)\s+(\S+)\s+\(fetch\)/
+              urls[Regexp.last_match(1)] = Regexp.last_match(2)
+            end
+          end
+          urls
+        end
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        {}
+      end
+
+      # @param name [String]
+      # @return [String, nil]
+      def remote_url(name)
+        if @backend == :gem
+          r = @git.remotes.find { |x| x.name == name }
+          r&.url
+        else
+          out, status = git_capture2("config", "--get", "remote.#{name}.url")
+          status.success? ? out.strip : nil
+        end
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        nil
+      end
+
+      # Checkout the given branch
+      # @param branch [String]
+      # @return [Boolean]
+      def checkout(branch)
+        if @backend == :gem
+          @git.checkout(branch)
+          true
+        else
+          git_system("checkout", branch.to_s)
+        end
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        false
+      end
+
+      # Pull from a remote/branch
+      # @param remote [String]
+      # @param branch [String]
+      # @return [Boolean]
+      def pull(remote, branch)
+        if @backend == :gem
+          @git.pull(remote, branch)
+          true
+        else
+          git_system("pull", remote.to_s, branch.to_s)
+        end
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        false
+      end
+
+      # Fetch a ref from a remote (or everything if ref is nil)
+      # @param remote [String]
+      # @param ref [String, nil]
+      # @return [Boolean]
+      def fetch(remote, ref = nil)
+        if @backend == :gem
+          if ref
+            @git.fetch(remote, ref)
+          else
+            @git.fetch(remote)
+          end
+          true
+        elsif ref
+          git_system("fetch", remote.to_s, ref.to_s)
+        else
+          git_system("fetch", remote.to_s)
+        end
+      rescue => e
+        Kettle::Dev.debug_error(e, __method__)
+        false
+      end
+
+      private
+
+      def git_capture2(*args)
+        if @root == Dir.pwd
+          Open3.capture2("git", *args)
+        else
+          Open3.capture2("git", *args, chdir: @root)
+        end
+      end
+
+      def git_system(*args)
+        if @root == Dir.pwd
+          system("git", *args)
+        else
+          system("git", *args, chdir: @root)
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,331 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# vim: set syntax=ruby
+
+# kettle-release: Automate release steps from CONTRIBUTING.md
+# - Runs sanity checks
+# - Ensures version/changelog updated (with confirmation)
+# - Commits and pushes a release prep commit
+# - Ensures on trunk, up-to-date
+# - Builds and releases using Bundler/Rake (reproducible by default in Bundler 2.7+)
+# - Runs `bundle exec rake build` (expects PEM password unless SKIP_GEM_SIGNING)
+#   - If signing not skipped and no public cert in certs/<user>.pem, aborts with guidance
+# - Runs `bundle exec rake release` (expects PEM password and RubyGems MFA OTP)
+# - Runs bin/gem_checksums (which creates the checksum commit), then pushes it
+# - Optionally creates a GitHub Release when GITHUB_TOKEN is present
+# - Finally pushes tags to remotes (including an 'all' aggregator if configured)
+
+# Immediate, unbuffered output
+$stdout.sync = true
+$stderr.sync = true
+
+# Do not rely on Bundler; allow running in repos that do not depend on kettle-dev
+# Ensure RubyGems is available for 'require' lookups
+begin
+  require "rubygems"
+rescue LoadError
+  # Older Rubies always have rubygems; continue anyway
+end
+
+script_basename = File.basename(__FILE__)
+repo_lib = File.expand_path("../lib", __dir__)
+$LOAD_PATH.unshift(repo_lib) if File.directory?(repo_lib) && !$LOAD_PATH.include?(repo_lib)
+
+begin
+  require "kettle/dev"
+  require "kettle/dev/executable_version"
+  require "kettle/dev/release_cli"
+  Kettle::Dev::ExecutableVersion.print_and_exit!(script_basename, ARGV, value_option: true)
+  machine_output = ARGV.any? { |arg| arg == "--json" || arg.start_with?("--events") }
+  Kettle::Dev::ExecutableVersion.print_header(script_basename) unless machine_output
+rescue LoadError => e
+  warn("#{script_basename}: could not load dependency: #{e.class}: #{e.message}")
+  warn("Hint: Ensure the host project has kettle-dev as a dependency and run bundle install.")
+  exit(1)
+end
+
+# Always execute when this file is loaded (e.g., via a Bundler binstub).
+# Do not guard with __FILE__ == $PROGRAM_NAME because binstubs use Kernel.load.
+if ARGV.include?("-h") || ARGV.include?("--help")
+  puts <<~USAGE
+    Usage: kettle-release [--version VERSION] [--local-ci] [--yes] [--appraisal-update] [--skip-bundle-audit] [--skip-steps STEPS] [--ci-workflows WORKFLOWS] [--skip-remotes REMOTES] [--required-remotes REMOTES] [--secrets-provider NAME] [--json|--events[=TYPES]] [--report PATH] [start_step=<0-19>]
+
+    Automates the release flow for a Ruby gem in the host project.
+
+    Full releases start at step 0 and run `kettle-pre-release` plus
+    `kettle-changelog` before the numbered release steps. Any start_step
+    greater than 0 skips pre-release prep and resumes directly at the
+    requested numbered step.
+
+    Start steps (use start_step=<n> to begin at that step):
+      0. Run kettle-pre-release gates and kettle-changelog
+      1. Verify Bundler >= 2.7 (start at 1 to skip pre-release checks)
+      2. Detect version; RubyGems sanity check; confirm CHANGELOG/version; sync copyright years; update badges/headers
+      3. Run bin/setup
+      4. Run bin/rake (default task)
+      5. Run bin/rake appraisal:generate if Appraisals present
+      6. Ensure git user configured; commit release prep
+      7. Optional local CI with `act` (controlled by K_RELEASE_LOCAL_CI)
+      8. Ensure trunk in sync across remotes; rebase feature as needed
+      9. Push current branch to remotes (or 'all' remote)
+     10. Monitor CI after push; abort on failures
+     11. Merge feature into trunk and push
+     12. Checkout trunk and pull latest
+     13. Gem signing checks/guidance (skip with SKIP_GEM_SIGNING=true)
+     14. Build gem (bundle exec rake build)
+     15. Release gem (bundle exec rake release)
+     16. Generate and validate checksums (bin/gem_checksums)
+     17. Push checksum commit
+     18. Create GitHub Release (requires GITHUB_TOKEN)
+     19. Push tags to remotes (final)
+
+    Options:
+      start_step=<number>         # Begin at the numbered step above (e.g., 10 to resume at CI monitoring)
+      skip_steps=<numbers>        # Comma-separated numbered steps to skip while running the rest
+      --skip-steps NUMBERS        # Alias for skip_steps=NUMBERS (e.g., --skip-steps 10 or --skip-steps 10,18)
+      --version VERSION           # Use this version instead of detecting VERSION from lib/**/version.rb
+      --yes                       # Auto-approve release confirmation prompts
+      --appraisal-update          # Use slower appraisal:update instead of default appraisal:generate
+      --skip-bundle-audit         # Skip bundle:audit/update during release rake checks
+      --ci-workflows WORKFLOWS    # Comma-separated workflow files or stems to monitor at CI step 10
+      --skip-remotes REMOTES      # Comma-separated git remote names to exclude from release fetch/push parity
+      --required-remotes REMOTES  # Comma-separated remote names that must fetch for release parity; defaults to origin
+      --secrets-provider NAME     # Release secrets provider: interactive, 1password
+      --json                      # Print final machine-readable release report as JSON
+      --events[=TYPES]            # Print newline-delimited JSON release events, optionally filtered by type
+      --report PATH               # Write final machine-readable release report as JSON
+      --local-ci                  # Sensitive release mode: run act locally, publish before any git push,
+                                  # create the git tag locally, then push commits and tags after publish
+
+    Environment:
+      SKIP_GEM_SIGNING=true       # Build/release unsigned; avoids PEM password prompts
+      GEM_CERT_USER=<user>        # Select certs/<user>.pem for signing
+      K_RELEASE_LOCAL_CI=ask|1|0  # Use 'act' locally before push; 'ask' prompts, '1' forces, default off
+      K_RELEASE_LOCAL_CI_WORKFLOW # Name of workflow (without .yml) for local CI; defaults to locked_deps or first
+      K_RELEASE_CI_WORKFLOWS      # Comma-separated workflow files or stems to monitor at CI step 10
+      K_RELEASE_SKIP_REMOTES      # Comma-separated git remote names to exclude from release fetch/push parity
+      K_RELEASE_REQUIRED_REMOTES  # Comma-separated remotes that must fetch for release parity; defaults to origin
+      KETTLE_RELEASE_SECRETS_PROVIDER=1password
+                                  # Load release secrets through the configured provider
+      KETTLE_RELEASE_1PASSWORD_ITEM=Rubygems
+      KETTLE_RELEASE_1PASSWORD_GEM_SIGNING_PASSPHRASE_FIELD=GEM-SIGN-PASSPHRASE
+      KETTLE_RELEASE_1PASSWORD_RUBYGEMS_OTP_FIELD='one-time password'
+                                  # Defaults used by the 1Password provider
+      KETTLE_RELEASE_1PASSWORD_ACCOUNT
+      KETTLE_RELEASE_1PASSWORD_GEM_SIGNING_PASSPHRASE_REFERENCE
+      KETTLE_RELEASE_1PASSWORD_RUBYGEMS_OTP_REFERENCE
+                                  # Optional explicit 1Password account or op:// references
+      KETTLE_RELEASE_GEM_SIGNING_PASSPHRASE_SOURCE=cached
+      KETTLE_RELEASE_GEM_SIGNING_PASSPHRASE
+                                  # Internal family integration: reuse a cached passphrase
+      KETTLE_RELEASE_APPRAISAL_TASK=appraisal:update
+                                  # Use slower appraisal:update instead of default appraisal:generate
+      KETTLE_DEV_SKIP_BUNDLE_AUDIT=true
+                                  # Skip bundle:audit/update during release rake checks
+      GITHUB_TOKEN / GH_TOKEN     # Optional; enables GitHub release creation and API queries
+      GITLAB_TOKEN / GL_TOKEN     # Optional; enables GitLab API queries when applicable
+      DEBUG=true                  # Print backtraces on errors
+
+    Examples:
+      kettle-release                       # full flow from the top (start_step=0)
+      kettle-release --local-ci            # run local act CI, publish gem, then push commits/tags
+      kettle-release start_step=1          # skip pre-release checks and start numbered release steps
+      kettle-release start_step=10         # resume by monitoring CI for the current branch
+      kettle-release skip_steps=10         # run the release but skip remote CI monitoring
+      SKIP_GEM_SIGNING=true kettle-release start_step=14  # build+release without signing
+  USAGE
+  exit 0
+end
+
+# Parse release options from ARGV
+def extract_version_arg!(argv)
+  version = nil
+  if (idx = argv.index("--version"))
+    version = argv[idx + 1]
+    Kettle::Dev::ExitAdapter.abort("--version requires a VERSION") if version.to_s.empty?
+    argv.slice!(idx, 2)
+  end
+  argv.delete_if do |arg|
+    if arg.start_with?("--version=", "version=")
+      version = arg.split("=", 2)[1]
+      true
+    else
+      false
+    end
+  end
+  Kettle::Dev::Versioning.normalize_explicit_version(version)
+end
+
+def extract_skip_steps_arg!(argv)
+  skip_steps = nil
+  if (idx = argv.index("--skip-steps"))
+    skip_steps = argv[idx + 1]
+    Kettle::Dev::ExitAdapter.abort("--skip-steps requires a comma-separated step list") if skip_steps.to_s.empty?
+    argv.slice!(idx, 2)
+  end
+  argv.delete_if do |arg|
+    if arg.start_with?("--skip-steps=", "skip_steps=")
+      skip_steps = arg.split("=", 2)[1]
+      true
+    else
+      false
+    end
+  end
+  skip_steps
+end
+
+def extract_ci_workflows_arg!(argv)
+  workflows = nil
+  if (idx = argv.index("--ci-workflows"))
+    workflows = argv[idx + 1]
+    if workflows.to_s.empty? || workflows.to_s.start_with?("-")
+      Kettle::Dev::ExitAdapter.abort("--ci-workflows requires a comma-separated workflow list")
+    end
+    argv.slice!(idx, 2)
+  end
+  argv.delete_if do |arg|
+    if arg.start_with?("--ci-workflows=", "ci_workflows=")
+      workflows = arg.split("=", 2)[1]
+      Kettle::Dev::ExitAdapter.abort("--ci-workflows requires a comma-separated workflow list") if workflows.to_s.empty?
+      true
+    else
+      false
+    end
+  end
+  workflows
+end
+
+def extract_skip_remotes_arg!(argv)
+  remotes = nil
+  if (idx = argv.index("--skip-remotes"))
+    remotes = argv[idx + 1]
+    if remotes.to_s.empty? || remotes.to_s.start_with?("-")
+      Kettle::Dev::ExitAdapter.abort("--skip-remotes requires a comma-separated remote list")
+    end
+    argv.slice!(idx, 2)
+  end
+  argv.delete_if do |arg|
+    if arg.start_with?("--skip-remotes=", "skip_remotes=")
+      remotes = arg.split("=", 2)[1]
+      Kettle::Dev::ExitAdapter.abort("--skip-remotes requires a comma-separated remote list") if remotes.to_s.empty?
+      true
+    else
+      false
+    end
+  end
+  remotes
+end
+
+def extract_required_remotes_arg!(argv)
+  remotes = nil
+  if (idx = argv.index("--required-remotes"))
+    remotes = argv[idx + 1]
+    if remotes.to_s.empty? || remotes.to_s.start_with?("-")
+      Kettle::Dev::ExitAdapter.abort("--required-remotes requires a comma-separated remote list")
+    end
+    argv.slice!(idx, 2)
+  end
+  argv.delete_if do |arg|
+    if arg.start_with?("--required-remotes=", "required_remotes=")
+      remotes = arg.split("=", 2)[1]
+      Kettle::Dev::ExitAdapter.abort("--required-remotes requires a comma-separated remote list") if remotes.to_s.empty?
+      true
+    else
+      false
+    end
+  end
+  remotes
+end
+
+def extract_report_arg!(argv)
+  report_path = nil
+  if (idx = argv.index("--report"))
+    report_path = argv[idx + 1]
+    if report_path.to_s.empty? || report_path.to_s.start_with?("-")
+      Kettle::Dev::ExitAdapter.abort("--report requires a path")
+    end
+    argv.slice!(idx, 2)
+  end
+  argv.delete_if do |arg|
+    if arg.start_with?("--report=", "report=")
+      report_path = arg.split("=", 2)[1]
+      Kettle::Dev::ExitAdapter.abort("--report requires a path") if report_path.to_s.empty?
+      true
+    else
+      false
+    end
+  end
+  report_path
+end
+
+def extract_secrets_provider_arg!(argv)
+  provider = nil
+  if (idx = argv.index("--secrets-provider"))
+    provider = argv[idx + 1]
+    if provider.to_s.empty? || provider.to_s.start_with?("-")
+      Kettle::Dev::ExitAdapter.abort("--secrets-provider requires a provider name")
+    end
+    argv.slice!(idx, 2)
+  end
+  argv.delete_if do |arg|
+    if arg.start_with?("--secrets-provider=", "secrets_provider=")
+      provider = arg.split("=", 2)[1]
+      Kettle::Dev::ExitAdapter.abort("--secrets-provider requires a provider name") if provider.to_s.empty?
+      true
+    else
+      false
+    end
+  end
+  provider
+end
+
+def extract_events_arg!(argv)
+  events = false
+  event_types = nil
+  argv.delete_if do |arg|
+    if arg == "--events"
+      events = true
+    elsif arg.start_with?("--events=")
+      events = true
+      event_types = arg.split("=", 2)[1]
+    else
+      false
+    end
+  end
+  [events, event_types]
+end
+
+local_ci = ARGV.include?("--local-ci")
+yes = !!ARGV.delete("--yes")
+appraisal_task = ARGV.delete("--appraisal-update") ? "appraisal:update" : nil
+skip_bundle_audit = !!ARGV.delete("--skip-bundle-audit")
+json_output = !!ARGV.delete("--json")
+events_output, event_types = extract_events_arg!(ARGV)
+Kettle::Dev::ExitAdapter.abort("--events cannot be combined with --json") if events_output && json_output
+start_step_arg = ARGV.find { |a| a.start_with?("start_step=") }
+start_step = start_step_arg ? start_step_arg.split("=", 2)[1].to_i : 0
+version_override = extract_version_arg!(ARGV)
+skip_steps = extract_skip_steps_arg!(ARGV)
+ci_workflows = extract_ci_workflows_arg!(ARGV)
+skip_remotes = extract_skip_remotes_arg!(ARGV)
+required_remotes = extract_required_remotes_arg!(ARGV)
+report_path = extract_report_arg!(ARGV)
+secrets_provider = extract_secrets_provider_arg!(ARGV)
+
+begin
+  event_stream = events_output ? Kettle::Ndjson.event_stream($stdout, types: event_types) : nil
+  Kettle::Dev::ReleaseCLI.new(start_step: start_step, local_ci: local_ci, version: version_override, appraisal_task: appraisal_task, skip_steps: skip_steps, skip_bundle_audit: skip_bundle_audit, ci_workflows: ci_workflows, skip_remotes: skip_remotes, required_remotes: required_remotes, secrets_provider_name: secrets_provider, yes: yes, event_stream: event_stream, json_output: json_output, json_io: $stdout, report_path: report_path).run
+rescue LoadError => e
+  warn("#{script_basename}: could not load dependency: #{e.class}: #{e.message}")
+  warn(Array(e.backtrace).join("\n")) if ENV["DEBUG"]
+  exit(1)
+rescue SystemExit => e
+  # Preserve exit status, but ensure at least a newline so shells don't show an empty line only.
+  warn("#{script_basename}: exited (status=#{e.status}, msg=#{e.message})") if e.status != 0
+  raise
+rescue => e
+  warn("#{script_basename}: unexpected error: #{e.class}: #{e.message}")
+  warn(Array(e.backtrace).join("\n"))
+  exit(1)
+end

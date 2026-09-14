@@ -18,304 +18,430 @@ redirect_from:
 <span class='anchor' id='about-me'></span>
 
 # About Me
-Ciao! I am Wenhui (Oscar) Huang, a Postdoctoral Fellow in [Harvard Computational Robotics Group](https://computationalrobotics.seas.harvard.edu/) and [Harvard Embodied Minds Lab](https://embodied-minds-lab.github.io/), co-advised by <u>Prof. Heng Yang</u> and <u>Prof. Yilun Du</u>. I was a PhD and Research Associate in [Automated Driving and Human-Machine System Lab](https://lvchen.wixsite.com/automan) at Nanyang Technological University (NTU), advised by <u>Prof. Chen Lv</u>, and a Visiting PhD Scholar in Harvard Computational Robotics Group. Previously, I had the pleasure of collaborating with Prof. <u>Francesco Braghin</u> during my time at the [i.Drive Lab](https://www.idrive.polimi.it/).
+Hey, I'm Obed Honour Eje, a final-year Mechatronics Engineering undergraduate at the Federal University of Technology Minna, Nigeria.
 
-<!-- 📌 I will graduate in Summer 2025 and am actively seeking a postdoctoral researcher position! Please reach out to me if you think I might be a good fit. 📌 -->
+I'm currently Independent Researcher at [ML Collective](https://mlcollective.org/) and a Research Intern at the [Advanced Engineering Innovation Research Group](https://aeirg.com.ng/), FUTMinna, under [Dr. Taliha Folorunsho](https://scholar.google.com/citations?user=WeMXps0AAAAJ&hl=en) and [Dr. Jibril Abdullahi Bala](https://scholar.google.com/citations?user=EPv13M8AAAAJ&hl=en). My work broadly covers intelligent autonomous systems and their deployment in resource-constrained environments.
 
-# Research Interests
+My current research sits at the intersection of robust perception and principled reasoning under uncertainty, specifically in settings where conventional sensor assumptions do not hold. This ranges from occlusion-aware object detection on budget compute, to benchmarking vision and path-planning architectures against the harsh realities of unstructured environments. The organizing question across all of it is the gap between what a system can do under controlled evaluation and what it can reliably do when deployed in the uncertainties of the real world.
 
-| **Research Field**       |**Research Application**            |
-|--------------------------|------------------------------------|
-| Reinforcement Learning   | Intelligent Tranporatation Systems |
-| Continual Learning       | Robotics                           |
-| VLM and VLA              | Autonomous Vehicles                |
-| Human-in-the-Loop AI     | Visual Navigation                  |
+Long term, I intend to cntribute to the frontiers of robotics generalization and human-robot interaction. I intend to establish my own research lab and work on the questions that sit at that boundary.
 
 
-<!-- My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>). -->
+# News
+
+- *Aug. 2026*: Presented a poster on "Adaptive Low-Light Enhancement for Road Anomaly Detection: A Multi-Architecture Benchmark and Edge Deployment Study" at Deep Learning Indaba 2026.
+
+- *Jun. 2026*: Our poster on [A Stone Against Goliath: Beating Occlusion Without LiDAR on Resource-Constrained Robots](https://github.com/HonourObed) was accepted at the WiML Symposium, ICML 2026.
+
+- *Jun. 2026*: Will be delivering a short talk at [PyCon Africa 2026](https://africa.pycon.org/), Kampala, Uganda on "Deploying Intelligence at the Edge: Building Real-World Perception Systems with Python on Constrained Hardware."
+
+- *Jun. 2026*: Served as a panelist at the Africa Robotics Network Community Building Program, ICRA 2026, Vienna.
+
+- *May. 2026*: Paper and poster accepted at Deep Learning IndabaX Nigeria 2026.
+
+- *Apr. 2026*: Awarded the [ROSCon 2026 Diversity Scholarship](https://roscon.ros.org/2026/) for fully sponsored participation at ROSCon 2026, Toronto — one of only 3 Nigerians selected globally.
+
+- *Feb. 2026*: Awarded the [IEEE RAS IDEA Travel Grant](https://2026.ieee-icra.org/) for fully funded participation at ICRA 2026, Vienna — one of only 5 Nigerians selected globally.
+
+- *Jan. 2026*: Developed [AgroScout](https://github.com/HonourObed/agriscout_robot), a low-cost autonomous precision agriculture robot integrating learning-based visual perception with real-time control, without depth sensors.
+
+- *Jan. 2026*: Delivered a departmental lecture on research consistency and long-term academic development.
+
+- *Jun. 2025*: Contributed to the development of a machine-learning-based anxiety detection system under the [Green Wireless Networking Group](https://www.researchgate.net/scientific-contributions/Elizabeth-N-Onwuka-2120992756), focusing on physiological signal acquisition and real-time inference.
+
+- *Dec. 2024*: Appointed [Technical Lead of the FUTMinna MATLAB Student Community, FUTMinna](https://www.linkedin.com/company/futminna-matlab-space/).
+
+- *Apr. 2024*: Joined the [Green Wireless Networking Group](https://www.researchgate.net/scientific-contributions/Elizabeth-N-Onwuka-2120992756) under Prof. Elizabeth Onwuka, contributing to research in AI-enabled physiological monitoring.
+
+- *Dec. 2023*: Joined the [Advanced Engineering Innovation Research Group (AEIRG)](https://aeirg.com.ng/), marking the start of my formal research engagement in intelligent systems.
 
 
-# 🔥 News
-- *May. 2026*: &nbsp;🌱🌱 Our paper **[AutoMoT](https://arxiv.org/abs/2603.14851)** on *Unified Asynchronous VLA as End-to-End Model* has been accepted by **ICML 2026**! Looking forward to seeing you in Seoul, South Korea!
-- *May. 2026*: &nbsp;🌱🌱 I’m pleased to share that I will be serving as an Area Chair at the 12th IEEE International Conference on Cybernetics and Intelligent Systems & Robotics, Automation and Mechatronics (IEEE CIS-RAM 2026), to be held on Aug. 5-7, 2026.
-- *Feb. 2026*: &nbsp;🏅🏅 I am honored to be recognized as a [featured Postdoctoral Researcher](https://www.linkedin.com/feed/update/urn:li:activity:7424743851569061889/) by MAE department, NTU!
-- *Dec. 2025*: &nbsp;☃️☃️ Our work on *enhancing open-ended reasoning of AD-tailored VLM through reinforced fine-tuning (RFT)* is now available on arXiv! [OpenREAD](https://arxiv.org/abs/2512.01830)
-- *Oct. 2025*: &nbsp;🍁🍁 Our work on *Mixture-of-Transformers-based VLA with unified Fast-Slow reasoning* is now available on arXiv! [MoTVLA](https://arxiv.org/abs/2510.18337)
-- *Aug. 2025*: &nbsp;🏅🏅 I am awarded as a [Winner of Asia-Pacific Region](https://www.linkedin.com/posts/itswc2019_itss-itssingapore-intelligent-activity-7367088514867363843-9ajc/) in Future Leaders Program of ITS World Congress 2025, and will give an invited talk in Atlanta, see you there!
-- *May. 2025*: &nbsp;🏅🏅 Our team secured the [Champion](https://www.linkedin.com/posts/ntumae_ntusg-ntumae-hackathon2025-activity-7319962293352427520-rcuL/) in [𝗜𝗧𝗦𝗦 𝘅 𝗟𝗧𝗔 𝗛𝗮𝗰𝗸𝗮𝘁𝗵𝗼𝗻 2025](https://itss-lta-hackathon2025.carrd.co/#)!
-- *Apr. 2025*: &nbsp;🏅🏅 I am honored to be recognized as a [featured PhD candidate](https://ieeexplore.ieee.org/document/10938667) in ITS field by IEEE Intelligent Transportation Systems Society (ITSS)! 
-- *Mar. 2025*: &nbsp;🌱🌱 Our paper on deep imitative reinforcement learning-based decision-making for autonomous driving has been accepted by Transportation Research Part C! 
-- *Jan. 2025*: &nbsp;☃️☃️ Our paper on integrated hybrid prediction and planning for autonomous driving has been accepted by TPAMI! 
-- *Dec. 2024*: &nbsp;🎄🎄 Our work on VLM-based closed-loop autonomous driving is now available on arXiv! [WiseAD](https://arxiv.org/abs/2412.09951) 
-- *Jul. 2024*: &nbsp;🏖️🏖️ Our ITSC 2025 invited session on [Learning-empowered Intelligent Transportation Systems: Foundation Vehicles and Coordination Technique](https://oscarhuangwind.github.io/Foundation_Vehicle/) received 11 paper submissions, and 10 papers were accepted. Congratulations to all the authors! Looking forward to seeing you in Edmonton, Canada!
-- *Jun. 2024*: &nbsp;🏖️🏖️ Our paper on safety human-in-the-loop RL for autonomous driving has been accepted by T-ITS! 
-- *Jun. 2024*: &nbsp;🏆🏆 Our team secured first place in the Waymo Open Dataset Occupancy Flow Challenge and second place in the Sim Agents Challenge! Check out our technical reports on the [Waymo challenge website](https://waymo.com/open/challenges/) and [CVPR 2024 Workshop on Autonomous Driving](https://cvpr2024.wad.vision/).
-- *May. 2024*: &nbsp;🌱🌱 Visited [Gran Turismo Sophy team](https://www.gran-turismo.com/us/gran-turismo-sophy/) at Sony AI, Japan, and gave a talk on RL for autonomous racing!
-- *Apr. 2024*: &nbsp;🌱🌱 Our paper on robust RL for autonomous driving has been accepted by Transportation Research Part C: Emerging Technologies! 
-- *Jan. 2024*: &nbsp;☃️☃️ Our paper on uncertainty-aware RL with human guidance for autonomous driving has been accepted by ICRA! See you in Yokohama, Japan!
-- *Nov. 2023*: &nbsp;☃️☃️ Our paper on robust RL for decision-making has been accepted by Engineering!
-- *Oct. 2023*: &nbsp;🍁🍁 Our paper on learning from demonstration for RL-based eco-driving has been accepted by Energy!
-- *Sep. 2023*: &nbsp;🍁🍁 Our paper on sampling efficient preference-guided DQN (PGDQN) algorithm has been accepted by TNNLS!
-- *Sep. 2023*: &nbsp;🍁🍁 Our paper on goal-oriented transformer-based autonomous navigation has been accepted by T-ITS!
-- *Sep. 2023*: &nbsp;🏅🏅 We won the best paper runner-up award in ITSC 2023!
-- *Dec. 2022*: &nbsp;🥈🥈 Our team secured second place at [Intelligent Algorithm Final of Alibaba Global Future Vehicle Challenge](https://tianchi.aliyun.com/competition/entrance/531996)!
+# Publications
 
-# 📝 Publications 
+<p style="color: #7a8288; font-size: 0.9em;">[C] Conference paper &nbsp;·&nbsp; [W] Workshop paper</p>
 
-## Highlights
+<div class="pub-entry">
+  <span class="pub-tag">[C1]</span>
+  <div class="pub-content">
+    <strong>Eje, O. H., Kolade, O., Bagai, G., and Folorunsho, T. A. "Adaptive Low-Light Enhancement for Road Anomaly Detection: A Multi-Architecture Benchmark and Edge Deployment Study."</strong>
+    <span class="pub-venue">IEEE NigerCON 2026.</span>
+  </div>
+</div>
 
-<div class='paper-box'>
-  <div class='paper-box-image'>
-    <div>
-      <br>
-      <div class="badge">ICML'26</div> <br>
-      <img src='images\AutoMoT.gif' alt="动态演示" width="100%" style="height: auto; object-fit: contain;">
+<div class="pub-entry">
+  <span class="pub-tag">[C2]</span>
+  <div class="pub-content">
+    <strong>Eje, O. H., Abolarinwa, S., Kolade, O., Bagai, G., and Bala, J. A. "Comparative Evaluation of Nav2 Path-Planning Algorithms for Autonomous Emergency-Response Navigation on a Real Nigerian Urban Road Network."</strong>
+    <span class="pub-venue">IEEE NigerCON 2026.</span>
+  </div>
+</div>
+
+<div class="pub-entry">
+  <span class="pub-tag">[C3]</span>
+  <div class="pub-content">
+    <strong>Bagai, G., Kolade, O., Eje, O. H., and Oyedare, A. "Domain-Shift-Aware Parameter-Efficient Fine-Tuning for Malaria Detection in Low-Resource Clinical Settings."</strong>
+    <span class="pub-venue">IEEE NigerCON 2026.</span>
+  </div>
+</div>
+
+<div class="pub-entry">
+  <span class="pub-tag">[C4]</span>
+  <div class="pub-content">
+    <strong>Kolade, O., Oyedare, A., Bagai, G., and Eje, O. H. "Benchmarking Machine Learning Models for Contact Force Level Estimation in Tendon-Driven Continuum Robots."</strong>
+    <span class="pub-venue">IEEE NigerCON 2026.</span>
+  </div>
+</div>
+
+<div class="pub-entry">
+  <span class="pub-tag">[C5]</span>
+  <div class="pub-content">
+    <strong>Oyedare, A., Kolade, O., Bagai, G., and Eje, O. H. "A Two-Layer Hierarchical Gating Architecture for SLAM Optimization: Rare-Event Shielding and Contextual-Bandit Policy Design on the LHSI-50M Benchmark."</strong>
+    <span class="pub-venue">IEEE NigerCON 2026.</span>
+  </div>
+</div>
+
+<div class="pub-entry">
+  <span class="pub-tag">[C6]</span>
+  <div class="pub-content">
+    <strong>Kuzayet, B. G., Eje, O. H., and Bala, J. A. "Benchmarking Classification Performance for Binary-Class Fault Detection Under Real-World Imbalanced Data Conditions."</strong>
+    <span class="pub-venue"><a href="https://proceedings.mlr.press/v319/">Proceedings of IndabaX Nigeria 2026: Building Scalable AI That Works</a>, PMLR 319:278–292, 2026.</span>
+  </div>
+</div>
+
+<div class="pub-entry">
+  <span class="pub-tag">[W1]</span>
+  <div class="pub-content">
+    <strong>Onyenweaku, C.<sup>†</sup>, Adele, T.<sup>†</sup>, Abdulkareem, S.<sup>†</sup>, and Eje, O. H.<sup>†</sup> <em>(title withheld under review).</em></strong>
+    <span class="pub-venue">NeurIPS 2026 Workshop on GlobalSouthAI. <em>Under review.</em></span>
+  </div>
+</div>
+
+<p style="font-size: 0.85em; color: #7a8288;"><sup>†</sup> Equal contribution.</p>
+
+---
+
+# Presentations
+
+<p style="color: #7a8288; font-size: 0.9em;">[P] Poster &nbsp;·&nbsp; [T] Talk &nbsp;·&nbsp; [I] Invited Panel</p>
+
+<div class="pub-entry">
+  <span class="pub-tag">[P1]</span>
+  <div class="pub-content">
+    <strong>Onyenweaku, C.<sup>†</sup>, Adele, T.<sup>†</sup>, Abdulkareem, S.<sup>†</sup>, and Eje, O. H.<sup>†</sup> "A Stone Against Goliath: Beating Occlusion Without LiDAR on Resource-Constrained Robots."</strong>
+    <span class="pub-venue">WiML Symposium, ICML 2026.</span>
+  </div>
+</div>
+
+<div class="pub-entry">
+  <span class="pub-tag">[P2]</span>
+  <div class="pub-content">
+    <strong>Eje, O. H., Kolade, O., Bagai, G., and Folorunsho, T. A. "Adaptive Low-Light Enhancement for Road Anomaly Detection: A Multi-Architecture Benchmark and Edge Deployment Study."</strong>
+    <span class="pub-venue">Deep Learning Indaba 2026.</span>
+  </div>
+</div>
+
+<div class="pub-entry">
+  <span class="pub-tag">[P3]</span>
+  <div class="pub-content">
+    <strong>Eje, O. H. "Evaluating Architectural Robustness to Domain Shift in Road Anomaly Detection: CNNs, Two-Stage Detectors and Vision Transformers."</strong>
+    <span class="pub-venue">Deep Learning IndabaX Nigeria 2026.</span>
+  </div>
+</div>
+
+<div class="pub-entry">
+  <span class="pub-tag">[P4]</span>
+  <div class="pub-content">
+    <strong>Kuzayet, B. G., Eje, O. H., and Bala, J. A. "Benchmarking Classification Performance for Binary-Class Fault Detection Under Real-World Imbalanced Data Conditions."</strong>
+    <span class="pub-venue">Deep Learning IndabaX Nigeria 2026; PyCon Africa 2026, Kampala, Uganda.</span>
+  </div>
+</div>
+
+<div class="pub-entry">
+  <span class="pub-tag">[T1]</span>
+  <div class="pub-content">
+    <strong>Eje, O. H. "Deploying Intelligence at the Edge: Building Real-World Perception Systems with Python on Constrained Hardware."</strong>
+    <span class="pub-venue">Short Talk, PyCon Africa 2026, Kampala, Uganda.</span>
+  </div>
+</div>
+
+
+<div class="pub-entry">
+  <span class="pub-tag">[I1]</span>
+  <div class="pub-content">
+    <strong>Panelist, Africa Robotics Network Community Building Program.</strong>
+    <span class="pub-venue">ICRA 2026, Vienna, June 2026.</span>
+  </div>
+</div>
+
+<span class='anchor' id='community'></span>
+
+# Community
+
+African robotics research is not waiting to begin; it's already happening, in laboratories, student communities, and independent groups across the continent. What it needs now is more of the infrastructure that turns isolated effort into sustained momentum: communities where early researchers are groomed, where curiosity is structured into capability, and where the next generation of engineers encounters the field early enough to be shaped by it.
+
+That is the work I have tried to do. Not because the talent is missing, but because the conditions for it to compound are still being built;and someone has to build them.
+
+The roles below is that conviction made concrete.
+
+---
+
+## IEEE Robotics and Automation Society, FUTMinna
+### Technical Lead &nbsp;·&nbsp; <span style="color: #800020;">2025 – Present</span>
+
+<div class="slideshow-container" data-id="ieee">
+  <div class="slides-wrapper">
+    <div class="slide active">
+      <img src="/images/community/ieee-1.jpg" alt="IEEE RAS Bootcamp" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/ieee-2.jpg" alt="IEEE RAS AI Summer School" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/ieee-3.jpg" alt="IEEE RAS Workshop" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/ieee-4.jpg" alt="IEEE RAS Workshop" />
     </div>
   </div>
-  <div class='paper-box-text' markdown="1">
-
-[AutoMoT: A Unified Vision-Language-Action Model with Asynchronous Mixture -of-Transformers for End-to-End Autonomous Driving](https://arxiv.org/abs/2603.14851) 
-
-**Wenhui Huang<sup>1</sup>**, Songyan Zhang<sup>1</sup>, Qihang Huang<sup>1</sup>, Zhidong Wang, Zhiqi Mao, Collister Chua, Zhan Chen, Long Chen, Chen Lv
-
-[**Project**](https://automot-website.github.io/) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- We propose an **Asynchronous VLA for end-to-end autonomous driving, unifying the scene understanding, decision, and planning within a single Mixture-of-Transformers architecture, while enabling the asynchronous inference across different tasks through KV Caching.** AutoMoT achieves SOTA in the closed-loop longtail benchmark (Bench2Drive) and the Open-loop benchmark (nuScenes Safety). We also investigate the functional boundaries of pretrained VLMs in autonomous driving, clarifying when and to what extent AD-specific fine-tuning is necessary across different tasks.
-
-The source code and model checkpoints will be released by May 2026.
-</div>
+  <button class="slide-btn prev" onclick="changeSlide('ieee', -1)">&#10094;</button>
+  <button class="slide-btn next" onclick="changeSlide('ieee', 1)">&#10095;</button>
+  <div class="slide-dots">
+    <span class="dot active" onclick="goToSlide('ieee', 0)"></span>
+    <span class="dot" onclick="goToSlide('ieee', 1)"></span>
+    <span class="dot" onclick="goToSlide('ieee', 2)"></span>
+    <span class="dot" onclick="goToSlide('ieee', 3)"></span>
+    <span class="dot" onclick="goToSlide('ieee', 4)"></span>
+  </div>
 </div>
 
-<div class='paper-box'>
-  <div class='paper-box-image'>
-    <div>
-      <div class="badge">arxiv'25</div>
-      <img src='images/MoTVLA_Gif_Teaser.gif' alt="动态演示" width="100%" style="height: auto; object-fit: contain;">
+<div class="community-entry">
+  <p>Co-founded the IEEE Robotics and Automation Society FUTMinna Student Branch alongside the chapter president, driving the application process and establishment of what became the university's first formal robotics society; serve as its Technical Lead, responsible for the society's technical direction, curriculum, and programme delivery.</p>
+  <p>Designed the society's full robotics curriculum and serve as lead facilitator for all its classes; recognising early that students needed exposure to industry-standard tools, not just robotics concepts in the abstract; the Applied Robotics and ROS 2 Bootcamp was built around that conviction, structuring progression from foundational robotics theory through practical ROS 2 node architecture and live sensor visualisation in RViz2, delivered to both undergraduates and university staff.</p>
+  <p>Co-led the Robotics and Hardware track of the AI Summer School, taking hands-on robotics education beyond the university and into secondary school classrooms.</p>
+</div>
+
+---
+
+## FUTMinna MATLAB Student Community
+### Technical Lead &nbsp;·&nbsp; <span style="color: #800020;">Nov 2024 – Present</span>
+
+<div class="slideshow-container" data-id="matlab">
+  <div class="slides-wrapper">
+    <div class="slide active">
+      <img src="/images/community/matlab-1.jpg" alt="MATLAB Student Community Admin Team" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/matlab-2.jpg" alt="MATLAB Campus Competition" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/matlab-3.jpg" alt="MATLAB Campus Competition" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/matlab-4.jpg" alt="MATLAB Campus Competition" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/matlab-5.jpg" alt="MATLAB Campus Competition" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/matlab-6.jpg" alt="MATLAB Campus Competition" />
     </div>
   </div>
-  <div class='paper-box-text' markdown="1">
-
-[MoTVLA: A Vision-Language-Action Model with Unified Fast-Slow Reasoning](https://arxiv.org/abs/2510.18337) 
-
-<!-- [![](https://img.shields.io/github/stars/OscarHuangWind/Safe-Human-in-the-Loop-RL?style=social&label=Code Stars)](https://github.com/OscarHuangWind/Safe-Human-in-the-Loop-RL) -->
-
-**Wenhui Huang<sup>1</sup>**, Changhe Chen<sup>1</sup>, Han Qi, Chen Lv, Yilun Du, Heng Yang
-
-[**Project**](https://motvla.github.io/MoTVLA-website/) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- We propose an **Asynchronous VLA** for end-to-end autonomous driving, **unifying** scene understanding, decision-making, and planning within a single architecture, while enabling **asynchronous inference** via KV caching to meet real-time requirements.
-
-The source code and model checkpoints will be released by May 2026.
-</div>
+  <button class="slide-btn prev" onclick="changeSlide('matlab', -1)">&#10094;</button>
+  <button class="slide-btn next" onclick="changeSlide('matlab', 1)">&#10095;</button>
+  <div class="slide-dots">
+    <span class="dot active" onclick="goToSlide('matlab', 0)"></span>
+    <span class="dot" onclick="goToSlide('matlab', 1)"></span>
+    <span class="dot" onclick="goToSlide('matlab', 2)"></span>
+    <span class="dot" onclick="goToSlide('matlab', 3)"></span>
+    <span class="dot" onclick="goToSlide('matlab', 4)"></span>
+    <span class="dot" onclick="goToSlide('matlab', 5)"></span>
+    <span class="dot" onclick="goToSlide('matlab', 6)"></span>
+  </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv'25</div><img src='images/openread.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
-
-[OpenREAD: Reinforced Open-Ended Reasoning for End-to-End Autonomous Driving with LLM-as-Critic](https://arxiv.org/abs/2512.01830) [![](https://img.shields.io/github/stars/wyddmw/OpenREAD?style=social&label=Code Stars)](https://github.com/wyddmw/OpenREAD)
-
-Songyan Zhang<sup>1</sup>, **Wenhui Huang<sup>1</sup>**, Zhen Chen, Collister Chua, Qihang Huang, Chen Lv <br>
-<sup>1</sup>Equal Contributions
-
-[**Project**](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Hpatee0AAAAJ&citation_for_view=Hpatee0AAAAJ:HDshCWvjkbEC) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- We enhance **open-ended reasoning through reinforcement fine-tuning (RFT) by introducing an LLM-as-Critic mechanism**, and achieve joint training with trajectory planning for VLM-based autonomous driving.
-</div>
+<div class="community-entry">
+  <p>Scaled Nigeria's first MATLAB student community from 50 to 750+ members; designed and taught the Structured Beginners MATLAB Curriculum through weekly classes covering modelling, simulation, and computational systems; building a consistent learning culture .</p>
+  <p>Recruited and developed an assistant administrative team, transitioning the community from a single-lead operation into a self-sustaining organisation capable of independently planning and executing its own programmes; returned as a guest speaker at the team's inaugural independently organised bootcamp to speak on long-term technical growth and research consistency.</p>
+  <p>Co-organised the first Nigerian campus-wide MATLAB Coding Competition in collaboration with MathWorks, receiving an Honourable Mention at the national level.</p>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv'24</div><img src='images/WiseAD.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
+---
 
-[WiseAD: Knowledge Augmented End-to-End Autonomous Driving with Vision-Language Model](https://arxiv.org/abs/2412.09951) [![](https://img.shields.io/github/stars/wyddmw/WiseAD?style=social&label=Code Stars)](https://github.com/wyddmw/WiseAD)
+## WAAW Foundation, FUTMinna Chapter
+### Outreach Coordinator &nbsp;·&nbsp; <span style="color: #800020;">Jan 2026 – Present</span>
 
-Songyan Zhang<sup>1</sup>, **Wenhui Huang<sup>1</sup>**, Zihui Gao, Hao Chen, Chen Lv <br>
-<sup>1</sup>Equal Contributions
-
-[**Project**](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Hpatee0AAAAJ&citation_for_view=Hpatee0AAAAJ:IWHjjKOFINEC) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- we investigate the **effects of the depth and breadth of fundamental driving knowledge** on **closed-loop driving performance** and introduce WiseAD, a specialized VLM tailored for end-to-end autonomous driving capable of driving reasoning, action justification, object recognition, risk analysis, driving suggestions, and trajectory planning across diverse scenarios. 
-</div>
-</div>
-
-<!-- <div class='paper-box'><div class='paper-box-image'><div><div class="badge">T-ITS'24</div><img src='images/SafeHiLRL.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1"> -->
-
-<div class='paper-box'>
-  <div class='paper-box-image'>
-    <div>
-      <div class="badge">T-ITS'24</div>
-      <img src='images/SafeHIL.gif' alt="动态演示" width="100%" style="height: auto; object-fit: contain;">>
+<div class="slideshow-container" data-id="waaw">
+  <div class="slides-wrapper">
+    <div class="slide active">
+      <img src="/images/community/waaw-1.jpg" alt="Facilitating a WAAW Session" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/waaw-2.jpg" alt="Taking a Programming Lesson" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/waaw-3.jpg" alt="Teaching students" />
+    </div>
+        <div class="slide">
+      <img src="/images/community/waaw-4.jpg" alt="Teaching students" />
+    </div>
+        <div class="slide">
+      <img src="/images/community/waaw-5.jpg" alt="Teaching students" />
     </div>
   </div>
-  <div class='paper-box-text' markdown="1">
-
-[Safety-aware human-in-the-loop reinforcement learning with shared control for autonomous driving](https://ieeexplore.ieee.org/abstract/document/10596046) [![](https://img.shields.io/github/stars/OscarHuangWind/Safe-Human-in-the-Loop-RL?style=social&label=Code Stars)](https://github.com/OscarHuangWind/Safe-Human-in-the-Loop-RL)
-
-**Wenhui Huang**, Haochen Liu, Zhiyu Huang, Chen Lv 
-
-[**Project**](https://github.com/OscarHuangWind/Safe-Human-in-the-Loop-RL) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- we propose a **safe human-in-the-loop RL** (SafeHiL-RL), combined with curriculum guidance, to enable safe and efficient decision-making policies for autonomous vehicles.
-</div>
-</div>
-
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICRA'24</div><img src='images/RealWorld Test.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
-
-[Uncertainty-aware Reinforcement Learning for Autonomous Driving with Multimodal Digital Driver Guidance](https://ieeexplore.ieee.org/abstract/document/10610272) [![](https://img.shields.io/github/stars/OscarHuangWind/Learning-from-Intervention?style=social&label=Code Stars)](https://github.com/OscarHuangWind/Learning-from-Intervention)
-
-**Wenhui Huang**, Zitong Shan, Shanhe Lou, Chen Lv
-
-Video: [Youtube](https://www.youtube.com/watch?v=P4XWiXknpDA) \| [BiliBili](https://www.bilibili.com/video/BV1TC4y1o75U/?vd_source=18187e5a3c867d8cb394aa035fc03c49)
-
-[**Project**](https://oscarhuangwind.github.io/Learning-from-Intervention/) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- We propose an **uncertainty-aware RL** (UnaRL) framework, incorporating multimodal human guidance, to achieve robust decision-making policies for autonomous vehicles.
-</div>
-</div>
-
-
-<div class='paper-box'>
-  <div class='paper-box-image'>
-    <div>
-      <div class="badge">T-ITS'23</div>
-      <img src='images/GTRL.gif' alt="动态演示" width="100%" style="height: auto; object-fit: contain;">>
-    </div>
+  <button class="slide-btn prev" onclick="changeSlide('waaw', -1)">&#10094;</button>
+  <button class="slide-btn next" onclick="changeSlide('waaw', 1)">&#10095;</button>
+  <div class="slide-dots">
+    <span class="dot active" onclick="goToSlide('waaw', 0)"></span>
+    <span class="dot" onclick="goToSlide('waaw', 1)"></span>
+    <span class="dot" onclick="goToSlide('waaw', 2)"></span>
+    <span class="dot" onclick="goToSlide('waaw', 3)"></span>
+    <span class="dot" onclick="goToSlide('waaw', 4)"></span>
+    <span class="dot" onclick="goToSlide('waaw', 5)"></span>
   </div>
-  <div class='paper-box-text' markdown="1">
-
-[Goal-guided Transformer-enabled Reinforcement Learning for Efficient Autonomous Navigation](https://github.com/OscarHuangWind/DRL-Transformer-SimtoReal-Navigation) [![](https://img.shields.io/github/stars/OscarHuangWind/DRL-Transformer-SimtoReal-Navigation?style=social&label=Code Stars)](https://github.com/OscarHuangWind/DRL-Transformer-SimtoReal-Navigation)
-
-**Wenhui Huang**, Yanxin Zhou, Xiangkun He, Chen Lv 
-
-Sim to Real Video: [Youtube](https://www.youtube.com/watch?v=P4XWiXknpDA&feature=youtu.be) \| [BiliBili](https://www.bilibili.com/video/BV1Mj41147Md/?vd_source=18187e5a3c867d8cb394aa035fc03c49)
-
-[**Project**](https://github.com/OscarHuangWind/DRL-Transformer-SimtoReal-Navigation) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- We propose a goal-oriented transformer-based RL algorithm to realize efficient and adaptative visual navigation.
-</div>
 </div>
 
-<div class='paper-box'>
-  <div class='paper-box-image'>
-    <div>
-      <div class="badge">TNNLS'23</div>
-      <img src='images/PGDQN.gif' alt="动态演示" width="100%" style="height: auto; object-fit: contain;">>
-    </div>
-  </div>
-  <div class='paper-box-text' markdown="1">
-
-[Sampling Efficient Deep Reinforcement Learning Through Preference-Guided Stochastic Exploration](https://github.com/OscarHuangWind/Preference-Guided-DQN-Atari) [![](https://img.shields.io/github/stars/OscarHuangWind/Preference-Guided-DQN-Atari?style=social&label=Code Stars)](https://github.com/OscarHuangWind/Preference-Guided-DQN-Atari)
-
-**Wenhui Huang**, Cong Zhang, Jingda Wu, Xiangkun He, Jie Zhang, Chen Lv
-
-[**Project**](https://github.com/OscarHuangWind/Preference-Guided-DQN-Atari) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- We propose a sampling efficient stochastic exploration policy, preference-guided DQN (PGDQN), to enhance the performance of reinforcement learning algorithms.
-</div>
+<div class="community-entry">
+  <p>Co-coordinated 25 outreach programmes across secondary schools and underserved communities in Niger State during the 2025/2026 session, reaching approximately 2,000 children and young people with hands-on STEM education, mentorship, scholarship guidance, and engineering project work — from Arduino programming and sensor integration to AI demonstrations with Teachable Machine.</p>
+  <p>Built and sustained partnerships with schools, professional bodies, and university organisations including SPE FUTMinna, APWEN, and IEEE, expanding the chapter's technical capacity and community reach across multiple programme formats: bootcamps, school visits, energy education weeks, and a full summer STEM programme.</p>
+  <p>The chapter's sustained impact was recognised at the international level: Chapter of the Month (April 2026), Best Partnership Chapter for the first half of 2026 (July 2026), and the Most Active Community Impact Partner Award from SPE FUTMinna; the latter recognising consistent contribution to student and community development across the full session.</p>
 </div>
 
+<style>
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  max-width: 750px;
+  margin: 1.5em 0 1em 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
 
+.slides-wrapper {
+  position: relative;
+  width: 100%;
+  height: 420px;
+}
 
-## Selected Publications
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  pointer-events: none;
+}
 
-- [AutoMoT: A Unified Vision-Language-Action Model with Asynchronous Mixture-of-Transformers for End-to-End Autonomous Driving](https://arxiv.org/abs/2603.14851), **Wenhui Huang<sup>1</sup>**, Songyan Zhang<sup>1</sup>, Qihang Huang<sup>1</sup>, Zhidong Wang, Zhiqi Mao, Collister Chua, Zhan Chen, Long Chen, Chen Lv, **ICML'26**
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
 
-- [MoTVLA: A Vision-Language-Action Model with Unified Fast-Slow Reasoning](https://arxiv.org/abs/2510.18337), **Wenhui Huang**, Changhe Chen, Han Qi, Chen Lv, Yilun Du, Heng Yang, **arXiv'25**
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
 
-- [OpenREAD: Reinforced Open-Ended Reasoning for End-to-End Autonomous Driving with LLM-as-Critic](https://arxiv.org/abs/2512.01830), Songyan Zhang<sup>1</sup>, **Wenhui Huang<sup>1</sup>**, Zihui Gao, Hao Chen, Chen Lv, **arXiv'25** [![](https://img.shields.io/github/stars/wyddmw/OpenREAD?style=social&label=Code Stars)](https://github.com/wyddmw/OpenREAD)
+.slide-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background: rgba(128, 0, 32, 0.7);
+  color: white;
+  border: none;
+  padding: 0.5em 0.8em;
+  cursor: pointer;
+  font-size: 1.2em;
+  border-radius: 4px;
+  transition: background 0.2s;
+  z-index: 10;
+}
 
-- [Hybrid-Prediction Integrated Planning for Autonomous Driving](https://ieeexplore.ieee.org/abstract/document/10833731), Haochen Liu, Zhiyu Huang, **Wenhui Huang**, Haohan Yang, Xiaoyu Mo, Chen Lv, **IEEE T-PAMI'25** [![](https://img.shields.io/github/stars/georgeliu233/HPP?style=social&label=Code Stars)](https://github.com/georgeliu233/HPP)
+.slide-btn:hover { background: rgba(128, 0, 32, 1); }
+.slide-btn.prev { left: 10px; }
+.slide-btn.next { right: 10px; }
 
-- [WiseAD: Knowledge Augmented End-to-End Autonomous Driving with Vision-Language Model](https://arxiv.org/abs/2412.09951), Songyan Zhang<sup>1</sup>, **Wenhui Huang<sup>1</sup>**, Zihui Gao, Hao Chen, Chen Lv, **arXiv'24** [![](https://img.shields.io/github/stars/wyddmw/WiseAD?style=social&label=Code Stars)](https://github.com/wyddmw/WiseAD)
+.slide-dots {
+  text-align: center;
+  padding: 0.6em 0 0.2em;
+}
 
-- [Safety-aware human-in-the-loop reinforcement learning with shared control for autonomous driving](https://ieeexplore.ieee.org/abstract/document/10596046), **Wenhui Huang**, Haochen Liu, Zhiyu Huang, Chen Lv, **IEEE T-ITS'24** [![](https://img.shields.io/github/stars/OscarHuangWind/Safe-Human-in-the-Loop-RL?style=social&label=Code Stars)](https://github.com/OscarHuangWind/Safe-Human-in-the-Loop-RL)
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+}
 
-- [Trustworthy autonomous driving via defense-aware robust reinforcement learning against worst-case observational perturbations](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=Hpatee0AAAAJ&sortby=pubdate&citation_for_view=Hpatee0AAAAJ:mVmsd5A6BfQC), Xiangkun He, **Wenhui Huang**, Chen Lv, **Transportation Research Part C: Emerging Technologies'24**
+.dot.active { background: #800020; }
 
-- [Uncertainty-aware Reinforcement Learning for Autonomous Driving with Multimodal Digital Driver Guidance](https://ieeexplore.ieee.org/abstract/document/10610272), **Wenhui Huang**, Zitong Shan, Shanhe Lou, Chen Lv, **IEEE ICRA'24** [![](https://img.shields.io/github/stars/OscarHuangWind/Learning-from-Intervention?style=social&label=Code Stars)](https://github.com/OscarHuangWind/Learning-from-Intervention)
+.community-entry {
+  max-width: 750px;
+  margin-bottom: 1em;
+}
 
-- [Toward trustworthy decision-making for autonomous vehicles: A robust reinforcement learning approach with safety guarantees](https://www.sciencedirect.com/science/article/pii/S2095809923004708), Xiangkun He, **Wenhui Huang**, Chen Lv, **Engineering'24**
+.community-entry p {
+  margin-bottom: 0.6em;
+  line-height: 1.7;
+}
+</style>
 
-- [Expert-demonstration-augmented reinforcement learning for lane-change-aware eco-driving traversing consecutive traffic lights](https://www.sciencedirect.com/science/article/abs/pii/S0360544223028669), Chuntao Zhang, **Wenhui Huang**, Xingyu Zhou, Chen Lv, Chao Sun, **Energy'24**
+<script>
+const slideshows = {
+  ieee:   { current: 0, total: 4, timer: null },
+  matlab: { current: 0, total: 6, timer: null },
+  waaw:   { current: 0, total: 5, timer: null }
+};
 
-- [Sampling efficient deep reinforcement learning through preference-guided stochastic exploration](https://ieeexplore.ieee.org/abstract/document/10269149), **Wenhui Huang**, Cong Zhang, Jingda Wu, Xiangkun He, Jie Zhang, Chen Lv, **IEEE TNNLS'23** [![](https://img.shields.io/github/stars/OscarHuangWind/Preference-Guided-DQN-Atari?style=social&label=Code Stars)](https://github.com/OscarHuangWind/Preference-Guided-DQN-Atari)
+function getContainer(id) {
+  return document.querySelector(`.slideshow-container[data-id="${id}"]`);
+}
 
-- [Goal-guided transformer-enabled reinforcement learning for efficient autonomous navigation](https://ieeexplore.ieee.org/abstract/document/10254445),**Wenhui Huang**, Yanxin Zhou, Xiangkun He, Chen Lv, **IEEE T-ITS'23** [![](https://img.shields.io/github/stars/OscarHuangWind/DRL-Transformer-SimtoReal-Navigation?style=social&label=Code Stars)](https://github.com/OscarHuangWind/DRL-Transformer-SimtoReal-Navigation)
+function changeSlide(id, direction) {
+  const container = getContainer(id);
+  const slides = container.querySelectorAll('.slides-wrapper .slide');
+  const dots = container.querySelectorAll('.dot');
+  slides[slideshows[id].current].classList.remove('active');
+  dots[slideshows[id].current].classList.remove('active');
+  slideshows[id].current = (slideshows[id].current + direction + slides.length) % slides.length;
+  slides[slideshows[id].current].classList.add('active');
+  dots[slideshows[id].current].classList.add('active');
+}
 
-- [Potential hazard-aware adaptive shared control for human-robot cooperative driving in unstructured environment](https://ieeexplore.ieee.org/abstract/document/10004306), **Wenhui Huang**, Yanxin Zhou, Jianhuang Li, Chen Lv, **IEEE ICARCV'22**
+function goToSlide(id, index) {
+  const container = getContainer(id);
+  const slides = container.querySelectorAll('.slides-wrapper .slide');
+  const dots = container.querySelectorAll('.dot');
+  slides[slideshows[id].current].classList.remove('active');
+  dots[slideshows[id].current].classList.remove('active');
+  slideshows[id].current = index;
+  slides[slideshows[id].current].classList.add('active');
+  dots[slideshows[id].current].classList.add('active');
+}
 
-- [Safe decision-making for lane-change of autonomous vehicles via human demonstration-aided reinforcement learning](https://ieeexplore.ieee.org/abstract/document/10004306), Jingda Wu, **Wenhui Huang**, Niels de Boer, Yanghui Mo, Xiangkun He, Chen Lv, **IEEE ITSC'22**
+function startTimer(id) {
+  slideshows[id].timer = setInterval(() => changeSlide(id, 1), 4000);
+}
 
-- [Prioritized experience-based reinforcement learning with human guidance for autonomous driving](https://ieeexplore.ieee.org/abstract/document/9793564), Jingda Wu, Zhiyu Huang, **Wenhui Huang**, Chen Lv, **IEEE TNNLS'22**
+function stopTimer(id) {
+  clearInterval(slideshows[id].timer);
+  slideshows[id].timer = null;
+}
 
-- [Learning to drive via apprenticeship learning and deep reinforcement learning](https://ieeexplore.ieee.org/abstract/document/8995417), **Wenhui Huang**, Francesco Braghin, Zhuo Wang, **IEEE ICTAI'19**
+Object.keys(slideshows).forEach(id => {
+  const container = getContainer(id);
+  container.addEventListener('mouseenter', () => startTimer(id));
+  container.addEventListener('mouseleave', () => stopTimer(id));
+});
+</script>
 
-- [Autonomous vehicle driving via deep deterministic policy gradient](https://asmedigitalcollection.asme.org/IDETC-CIE/proceedings-abstract/IDETC-CIE2019/59216/1069916), **Wenhui Huang**, Francesco Braghin, Stefano Arrigoni, **ASME IDETC-CIE'19**
-
-# 🎖 Honors and Awards
-- *Feb. 2026* [featured Postdoctoral Researcher](https://www.linkedin.com/feed/update/urn:li:activity:7424743851569061889/), MAE NTU.
-- *Aug. 2025* [Winner of Asia-Pacific Region](https://www.linkedin.com/posts/itswc2019_itss-itssingapore-intelligent-activity-7367088514867363843-9ajc/), Future Leaders Program of ITS World Congress 2025.
-- *May. 2025* [Champion of 𝗜𝗧𝗦𝗦 𝘅 𝗟𝗧𝗔 𝗛𝗮𝗰𝗸𝗮𝘁𝗵𝗼𝗻 2025](https://www.linkedin.com/posts/ntumae_ntusg-ntumae-hackathon2025-activity-7319962293352427520-rcuL).
-- *Apr. 2025* [Featured PhD Candidate in ITS field](https://ieeexplore.ieee.org/document/10938667), IEEE ITSM.
-- *Jun. 2024* [1st Place Winner, Waymo Open Dataset Occupancy Flow Challenge](https://cvpr2024.wad.vision/), CVPR Workshop on Autonomous Driving. 
-- *Sep. 2024* Best Paper Runner-up Award, ITSC 2023. 
-- *Dec. 2022* 2nd Place Winner, Intelligent Algorithm Final of Alibaba Global Future Vehicle Challenge.
-- *Mar. 2017* Politecnico Di Milano DSU Scholarship.
-- *Jun. 2015* Outstanding Graduate (Top 1%).
-- *Oct. 2014* National Scholarship (Top 1%).
-- *Oct. 2013* First Prize Scholarship.
-- *Oct. 2012* Excellent Student Scholarship.
-
-<!-- # 📖 Educations
-- *2019.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  -->
-
-# 📚 Academic Services
-
-## Program Committee
-- Area Chair of 12th IEEE International Conference on Cybernetics and Intelligent Systems & Robotics, Automation and Mechatronics (IEEE CIS-RAM 2026).
-- Organizer of Invited Session on "Foundation Model-Empowered Decision-making and Planning for Intelligent Mobility Systems" at ITSC, 2026.
-- Lead organizer of Invited Session on [Foundation Model-Enabled Scene Understanding, Reasoning, and Decision-Making for Autonomous Driving and ITS](https://oscarhuangwind.github.io/ITSC2025_FoundationAD/) at ITSC, 2025.
-- Lead organizer of Invited Session on [Learning-empowered Intelligent Transportation Systems: Foundation Vehicles and Coordination Technique](https://oscarhuangwind.github.io/Foundation_Vehicle/) at ITSC, 2024
-
-## Journal Reviewer
-- IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)
-- IEEE Transactions on Intelligent Transportation Systems (T-ITS)
-- IEEE Transactions on Neural Networks and Learning Systems (TNNLS)
-- IEEE Transactions on Vehicular Technology (TVT)
-- IEEE Transactions on Intelligent Vehicles (TIV)
-- IEEE Transactions on Automation Science and Engineering (T-ASE)
-- IEEE Robotics and Automation Letters (RA-L)
-- The International Journal of Robotics Research (IJRR)
-- Transportation Research Part C: Emerging Technologies (Part C)
-- Engineering
-
-## Conference Reviewer
-- Forty-Third International Conference on Machine Learning (ICML) 2026
-- IEEE / CVF Computer Vision and Pattern Recognition Conference (CVPR) 2025
-- IEEE International Conference on Robotics and Automation (ICRA) 2023 – 2026
-- IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2023 - 2025
-- IEEE Intelligent Vehicles Symposium (IV) 2023 – 2026
-- IEEE Intelligent Transportation Systems Conference (ITSC) 2023 – 2026
-
-# 💬 Invited Talk
-- *Apr. 2026*, <u>Reinforced Continual Evolution in Decision Making for Intelligent Transportation Systems</u> <br> Wu Lab, MIT, USA. <br>
-- *Mar. 2026*, <u>Reinforced Continual Evolution of Decision-Making Systems for Robotic Foundation Models</u> <br> SIA Lab, Stanford University, USA. <br>
-- *Sep. 2025*, <u>Toward Country-scale Traffic Foundation Models: A Safe Vision-Language-Transportation System</u> <br> ITS World Congress 2025, Atlanta, USA. <br>
-- *May. 2025*, <u>Collective Continual Evolution of Decision-Making Systems with Policy-Language Alignment</u> <br> 
-  MIT CLEAR Lab , Boston, USA <br>
-  UCLA Mobility Lab, LA, USA.
-- *Mar. 2025*, Reinforced Continual Evolution of Decision-Making Systems <br>
-  School of Vehicle and Mobility, Tsinghua University, Beijing, China. <br>
-  Traffic Operations and Simulations Lab, Tongji University, Shanghai, China.
-- *Feb. 2025*, Reinforced Continual Evolution of Decision-Making Systems <br>
-  Engineering Research Center for Intelligent Electrified Mobility, SouthEast University, Nanjing, China. <br>
-  Prof. Chunhua Shen's Lab, Zhejiang University, Hangzhou, China.
-- *Nov. 2024*, Reinforced Continual Evolution of Decision-Making Systems, Harvard Computational Robotics Group, Harvard University, Cambridge, USA.
-- *Sep. 2024*, Reinforcement Learning-empowered Decision Making for Autonomous
-Driving under Knowledge Guidance, Michigan Traffic Lab, University of Michigan, Michigan, USA.
-- *May. 2024*, Uncertainty-aware Reinforcement Learning for Autonomous Driving
-and Autonomous Racing, Gran Turismo Sophy team, Sony AI, Tokyo, Japan.
-
-<hr>
-
-<script type='text/javascript' id='mapmyvisitors' src='https://mapmyvisitors.com/map.js?cl=ffffff&w=400&t=tt&d=wcSDNrByaZ2NPXebIm1FlNUSHQfgcFA5jlx5K40D7Sg'></script>
-
-<!-- - *2021.03*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  \| [\[video\]](https://github.com/) -->
-
-<!-- # 💻 Internships
-- comming soon! -->
-<!-- - *2019.05 - 2020.02*, [Lorem](https://github.com/), China. -->
+<div style="margin-top: 3em; padding-top: 1em; border-top: 1px solid #e0e0e0; color: #7a8288; font-size: 0.85em;">
+  Last updated: September 2026 &nbsp;·&nbsp; Obed Honour Eje
+</div>
