@@ -31,7 +31,7 @@ Long term, I intend to cntribute to the frontiers of robotics generalization and
 
 - *Aug. 2026*: Presented a poster on "Adaptive Low-Light Enhancement for Road Anomaly Detection: A Multi-Architecture Benchmark and Edge Deployment Study" at Deep Learning Indaba 2026.
 
-- *Jun. 2026*: Our poster on [A Stone Against Goliath: Beating Occlusion Without LiDAR on Resource-Constrained Robots](https://github.com/HonourObed) was accepted at the WiML Symposium, ICML 2026.
+- *Jun. 2026*: Our poster on [A Stone Against Goliath: Beating Occlusion Without LiDAR on Resource-Constrained Robots](https://icml.cc/virtual/2026/76538) was accepted at the WiML Symposium, ICML 2026.
 
 - *Jun. 2026*: Will be delivering a short talk at [PyCon Africa 2026](https://africa.pycon.org/), Kampala, Uganda on "Deploying Intelligence at the Edge: Building Real-World Perception Systems with Python on Constrained Hardware."
 
@@ -49,7 +49,7 @@ Long term, I intend to cntribute to the frontiers of robotics generalization and
 
 - *Jun. 2025*: Contributed to the development of a machine-learning-based anxiety detection system under the [Green Wireless Networking Group](https://www.researchgate.net/scientific-contributions/Elizabeth-N-Onwuka-2120992756), focusing on physiological signal acquisition and real-time inference.
 
-- *Dec. 2024*: Appointed [Technical Lead of the FUTMinna MATLAB Student Community, FUTMinna](https://www.linkedin.com/company/futminna-matlab-space/).
+- *Dec. 2024*: Appointed Technical Lead of the [FUTMinna MATLAB Student Community, FUTMinna](https://www.linkedin.com/company/futminna-matlab-space/).
 
 - *Apr. 2024*: Joined the [Green Wireless Networking Group](https://www.researchgate.net/scientific-contributions/Elizabeth-N-Onwuka-2120992756) under Prof. Elizabeth Onwuka, contributing to research in AI-enabled physiological monitoring.
 
