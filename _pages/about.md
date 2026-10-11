@@ -24,7 +24,7 @@ I'm currently Independent Researcher at [ML Collective](https://mlcollective.org
 
 My current research sits at the intersection of robust perception and principled reasoning under uncertainty, specifically in settings where conventional sensor assumptions do not hold. This ranges from occlusion-aware object detection on budget compute, to benchmarking vision and path-planning architectures against the harsh realities of unstructured environments. The organizing question across all of it is the gap between what a system can do under controlled evaluation and what it can reliably do when deployed in the uncertainties of the real world.
 
-Long term, I intend to cntribute to the frontiers of robotics generalization and human-robot interaction. I intend to establish my own research lab and work on the questions that sit at that boundary.
+Long term, I intend to contribute to the frontiers of robotics generalization and human-robot interaction. I intend to establish my own research lab and work on the questions that sit at that boundary.
 
 
 # News
