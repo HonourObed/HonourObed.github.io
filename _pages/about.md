@@ -51,7 +51,7 @@ Long term, I intend to contribute to the frontiers of robotics generalization an
 
 - *Dec. 2024*: Appointed Technical Lead of the [FUTMinna MATLAB Student Community, FUTMinna](https://www.linkedin.com/company/futminna-matlab-space/).
 
-- *Apr. 2024*: Joined the [Green Wireless Networking Group](https://www.researchgate.net/scientific-contributions/Elizabeth-N-Onwuka-2120992756) under Prof. Elizabeth Onwuka, contributing to research in AI-enabled physiological monitoring.
+- *Apr. 2024*: Joined the Green Wireless Networking Group under [Prof. Elizabeth Onwuka](https://scholar.google.com/citations?user=arXpricAAAAJ&hl=en), contributing to research in AI-enabled physiological monitoring.
 
 - *Dec. 2023*: Joined the [Advanced Engineering Innovation Research Group (AEIRG)](https://aeirg.com.ng/), marking the start of my formal research engagement in intelligent systems.
 
@@ -186,7 +186,7 @@ The roles below is that conviction made concrete.
 ---
 
 ## IEEE Robotics and Automation Society, FUTMinna
-### Technical Lead &nbsp;·&nbsp; <span style="color: #800020;">2025 – Present</span>
+### Technical Director &nbsp;·&nbsp; <span style="color: #800020;">June 2026 – Present</span>
 
 <div class="slideshow-container" data-id="ieee">
   <div class="slides-wrapper">
