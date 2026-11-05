@@ -126,8 +126,6 @@ Long term, I intend to contribute to the frontiers of robotics generalization an
 
 <p style="font-size: 0.85em; color: #7a8288;"><sup>†</sup> Equal contribution.</p>
 
----
-
 # Presentations
 
 <p style="color: #7a8288; font-size: 0.9em;">[I] Invited Panel &nbsp;·&nbsp; [T] Talk &nbsp;·&nbsp; [O] Oral &nbsp;·&nbsp; [P] Poster</p>
@@ -135,15 +133,15 @@ Long term, I intend to contribute to the frontiers of robotics generalization an
 <div class="pub-entry">
   <span class="pub-tag">[P1]</span>
   <div class="pub-content">
-    Onyenweaku, C.<sup>†</sup>, Adele, T.<sup>†</sup>, Abdulkareem, S.<sup>†</sup>, and <strong>Eje, O. H.</strong><sup>†</sup> "A Stone Against Goliath: Beating Occlusion Without LiDAR on Resource-Constrained Robots."
-    <span class="pub-venue"><em>WiML Symposium, ICML 2026.</em> <a href="https://drive.google.com/file/d/1qiv65y--1eFMUMTqcnVDF-GOh_Z7J6EK/view?usp=sharing"><i class="fas fa-link"></i></a></span>
+    <span class="pub-title">Onyenweaku, C.<sup>†</sup>, Adele, T.<sup>†</sup>, Abdulkareem, S.<sup>†</sup>, and <b>Eje, O. H.</b><sup>†</sup> "A Stone Against Goliath: Beating Occlusion Without LiDAR on Resource-Constrained Robots."</span>
+    <span class="pub-venue"><em>WiML Symposium, ICML 2026.</em> <a class="pub-link" href="https://drive.google.com/file/d/1qiv65y--1eFMUMTqcnVDF-GOh_Z7J6EK/view?usp=sharing">Link</a></span>
   </div>
 </div>
 
 <div class="pub-entry">
   <span class="pub-tag">[I1]</span>
   <div class="pub-content">
-    Panelist, Africa Robotics Network Community Building Program.
+    <span class="pub-title">Panelist, Africa Robotics Network Community Building Program.</span>
     <span class="pub-venue"><em>ICRA 2026</em>, Vienna, June 2026.</span>
   </div>
 </div>
@@ -151,39 +149,39 @@ Long term, I intend to contribute to the frontiers of robotics generalization an
 <div class="pub-entry">
   <span class="pub-tag">[T1]</span>
   <div class="pub-content">
-    <strong>Eje, O. H.</strong> "Deploying Intelligence at the Edge: Building Real-World Perception Systems with Python on Constrained Hardware."
-    <span class="pub-venue">Short Talk, <em>PyCon Africa 2026</em>, Kampala, Uganda. <a href="https://lnkd.in/p/eS9_d7hR"><i class="fas fa-link"></i></a></span>
+    <span class="pub-title"><b>Eje, O. H.</b> "Deploying Intelligence at the Edge: Building Real-World Perception Systems with Python on Constrained Hardware."</span>
+    <span class="pub-venue">Short Talk, <em>PyCon Africa 2026</em>, Kampala, Uganda. <a class="pub-link" href="https://lnkd.in/p/eS9_d7hR">Link</a></span>
   </div>
 </div>
 
 <div class="pub-entry">
   <span class="pub-tag">[O1]</span>
   <div class="pub-content">
-    <strong>Eje, O. H.</strong>, Kolade, O., Bagai, G., and Folorunso, T. A. "Adaptive Low-Light Enhancement for Road Anomaly Detection: A Multi-Architecture Benchmark and Edge Deployment Study."
-    <span class="pub-venue">Oral Presentation, IEEE NCon, 2026.</span>
+    <span class="pub-title"><b>Eje, O. H.</b>, Kolade, O., Bagai, G., and Folorunso, T. A. "Adaptive Low-Light Enhancement for Road Anomaly Detection: A Multi-Architecture Benchmark and Edge Deployment Study."</span>
+    <span class="pub-venue">Oral Presentation, <em>IEEE NigerCON 2026.</em></span>
   </div>
 </div>
 
 <div class="pub-entry">
   <span class="pub-tag">[O2]</span>
   <div class="pub-content">
-    <strong>Eje, O. H.</strong>, Abolarinwa, S., Kolade, O., Bagai, G., and Bala, J. A. "Comparative Evaluation of Nav2 Path-Planning Algorithms for Autonomous Emergency-Response Navigation on a Real Nigerian Urban Road Network."
-    <span class="pub-venue">Oral Presentation, IEEE NCon, 2026.</span>
+    <span class="pub-title"><b>Eje, O. H.</b>, Abolarinwa, S., Kolade, O., Bagai, G., and Bala, J. A. "Comparative Evaluation of Nav2 Path-Planning Algorithms for Autonomous Emergency-Response Navigation on a Real Nigerian Urban Road Network."</span>
+    <span class="pub-venue">Oral Presentation, <em>IEEE NigerCON 2026.</em></span>
   </div>
 </div>
 
 <div class="pub-entry">
   <span class="pub-tag">[P2]</span>
   <div class="pub-content">
-    <strong>Eje, O. H.</strong>, Kolade, O., Bagai, G., and Folorunso, T. A. "Adaptive Low-Light Enhancement for Road Anomaly Detection: A Multi-Architecture Benchmark and Edge Deployment Study."
-    <span class="pub-venue"><em>Deep Learning Indaba 2026.</em> <a href="https://drive.google.com/file/d/10sKV3SvL-RsXhg9J_df92zOcVOOYbfU9/view?usp=sharing"><i class="fas fa-link"></i></a></span>
+    <span class="pub-title"><b>Eje, O. H.</b>, Kolade, O., Bagai, G., and Folorunso, T. A. "Adaptive Low-Light Enhancement for Road Anomaly Detection: A Multi-Architecture Benchmark and Edge Deployment Study."</span>
+    <span class="pub-venue"><em>Deep Learning Indaba 2026.</em> <a class="pub-link" href="https://drive.google.com/file/d/10sKV3SvL-RsXhg9J_df92zOcVOOYbfU9/view?usp=sharing">Link</a></span>
   </div>
 </div>
 
 <div class="pub-entry">
   <span class="pub-tag">[P3]</span>
   <div class="pub-content">
-    <strong>Eje, O. H.</strong> "Evaluating Architectural Robustness to Domain Shift in Road Anomaly Detection: CNNs, Two-Stage Detectors and Vision Transformers."
+    <span class="pub-title"><b>Eje, O. H.</b> "Evaluating Architectural Robustness to Domain Shift in Road Anomaly Detection: CNNs, Two-Stage Detectors and Vision Transformers."</span>
     <span class="pub-venue"><em>Deep Learning IndabaX Nigeria 2026.</em></span>
   </div>
 </div>
@@ -191,7 +189,7 @@ Long term, I intend to contribute to the frontiers of robotics generalization an
 <div class="pub-entry">
   <span class="pub-tag">[P4]</span>
   <div class="pub-content">
-    Kuzayet, B. G., <strong>Eje, O. H.</strong>, and Bala, J. A. "Benchmarking Classification Performance for Binary-Class Fault Detection Under Real-World Imbalanced Data Conditions."
+    <span class="pub-title">Kuzayet, B. G., <b>Eje, O. H.</b>, and Bala, J. A. "Benchmarking Classification Performance for Binary-Class Fault Detection Under Real-World Imbalanced Data Conditions."</span>
     <span class="pub-venue"><em>Deep Learning IndabaX Nigeria 2026</em>; <em>PyCon Africa 2026</em>, Kampala, Uganda.</span>
   </div>
 </div>
