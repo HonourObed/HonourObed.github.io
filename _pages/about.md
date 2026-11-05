@@ -130,54 +130,69 @@ Long term, I intend to contribute to the frontiers of robotics generalization an
 
 # Presentations
 
-<p style="color: #7a8288; font-size: 0.9em;">[P] Poster &nbsp;·&nbsp; [T] Talk &nbsp;·&nbsp; [I] Invited Panel</p>
+<p style="color: #7a8288; font-size: 0.9em;">[I] Invited Panel &nbsp;·&nbsp; [T] Talk &nbsp;·&nbsp; [O] Oral &nbsp;·&nbsp; [P] Poster</p>
 
 <div class="pub-entry">
   <span class="pub-tag">[P1]</span>
   <div class="pub-content">
-    <strong>Onyenweaku, C.<sup>†</sup>, Adele, T.<sup>†</sup>, Abdulkareem, S.<sup>†</sup>, and Eje, O. H.<sup>†</sup> "A Stone Against Goliath: Beating Occlusion Without LiDAR on Resource-Constrained Robots."</strong>
-    <span class="pub-venue">WiML Symposium, ICML 2026.</span>
+    Onyenweaku, C.<sup>†</sup>, Adele, T.<sup>†</sup>, Abdulkareem, S.<sup>†</sup>, and <strong>Eje, O. H.</strong><sup>†</sup> "A Stone Against Goliath: Beating Occlusion Without LiDAR on Resource-Constrained Robots."
+    <span class="pub-venue"><em>WiML Symposium, ICML 2026.</em> <a href="https://drive.google.com/file/d/1qiv65y--1eFMUMTqcnVDF-GOh_Z7J6EK/view?usp=sharing"><i class="fas fa-link"></i></a></span>
   </div>
 </div>
 
 <div class="pub-entry">
-  <span class="pub-tag">[P2]</span>
+  <span class="pub-tag">[I1]</span>
   <div class="pub-content">
-    <strong>Eje, O. H., Kolade, O., Bagai, G., and Folorunsho, T. A. "Adaptive Low-Light Enhancement for Road Anomaly Detection: A Multi-Architecture Benchmark and Edge Deployment Study."</strong>
-    <span class="pub-venue">Deep Learning Indaba 2026.</span>
-  </div>
-</div>
-
-<div class="pub-entry">
-  <span class="pub-tag">[P3]</span>
-  <div class="pub-content">
-    <strong>Eje, O. H. "Evaluating Architectural Robustness to Domain Shift in Road Anomaly Detection: CNNs, Two-Stage Detectors and Vision Transformers."</strong>
-    <span class="pub-venue">Deep Learning IndabaX Nigeria 2026.</span>
-  </div>
-</div>
-
-<div class="pub-entry">
-  <span class="pub-tag">[P4]</span>
-  <div class="pub-content">
-    <strong>Kuzayet, B. G., Eje, O. H., and Bala, J. A. "Benchmarking Classification Performance for Binary-Class Fault Detection Under Real-World Imbalanced Data Conditions."</strong>
-    <span class="pub-venue">Deep Learning IndabaX Nigeria 2026; PyCon Africa 2026, Kampala, Uganda.</span>
+    Panelist, Africa Robotics Network Community Building Program.
+    <span class="pub-venue"><em>ICRA 2026</em>, Vienna, June 2026.</span>
   </div>
 </div>
 
 <div class="pub-entry">
   <span class="pub-tag">[T1]</span>
   <div class="pub-content">
-    <strong>Eje, O. H. "Deploying Intelligence at the Edge: Building Real-World Perception Systems with Python on Constrained Hardware."</strong>
-    <span class="pub-venue">Short Talk, PyCon Africa 2026, Kampala, Uganda.</span>
+    <strong>Eje, O. H.</strong> "Deploying Intelligence at the Edge: Building Real-World Perception Systems with Python on Constrained Hardware."
+    <span class="pub-venue">Short Talk, <em>PyCon Africa 2026</em>, Kampala, Uganda. <a href="https://lnkd.in/p/eS9_d7hR"><i class="fas fa-link"></i></a></span>
   </div>
 </div>
 
+<div class="pub-entry">
+  <span class="pub-tag">[O1]</span>
+  <div class="pub-content">
+    <strong>Eje, O. H.</strong>, Kolade, O., Bagai, G., and Folorunso, T. A. "Adaptive Low-Light Enhancement for Road Anomaly Detection: A Multi-Architecture Benchmark and Edge Deployment Study."
+    <span class="pub-venue">Oral Presentation, IEEE NCon, 2026.</span>
+  </div>
+</div>
 
 <div class="pub-entry">
-  <span class="pub-tag">[I1]</span>
+  <span class="pub-tag">[O2]</span>
   <div class="pub-content">
-    <strong>Panelist, Africa Robotics Network Community Building Program.</strong>
-    <span class="pub-venue">ICRA 2026, Vienna, June 2026.</span>
+    <strong>Eje, O. H.</strong>, Abolarinwa, S., Kolade, O., Bagai, G., and Bala, J. A. "Comparative Evaluation of Nav2 Path-Planning Algorithms for Autonomous Emergency-Response Navigation on a Real Nigerian Urban Road Network."
+    <span class="pub-venue">Oral Presentation, IEEE NCon, 2026.</span>
+  </div>
+</div>
+
+<div class="pub-entry">
+  <span class="pub-tag">[P2]</span>
+  <div class="pub-content">
+    <strong>Eje, O. H.</strong>, Kolade, O., Bagai, G., and Folorunso, T. A. "Adaptive Low-Light Enhancement for Road Anomaly Detection: A Multi-Architecture Benchmark and Edge Deployment Study."
+    <span class="pub-venue"><em>Deep Learning Indaba 2026.</em> <a href="https://drive.google.com/file/d/10sKV3SvL-RsXhg9J_df92zOcVOOYbfU9/view?usp=sharing"><i class="fas fa-link"></i></a></span>
+  </div>
+</div>
+
+<div class="pub-entry">
+  <span class="pub-tag">[P3]</span>
+  <div class="pub-content">
+    <strong>Eje, O. H.</strong> "Evaluating Architectural Robustness to Domain Shift in Road Anomaly Detection: CNNs, Two-Stage Detectors and Vision Transformers."
+    <span class="pub-venue"><em>Deep Learning IndabaX Nigeria 2026.</em></span>
+  </div>
+</div>
+
+<div class="pub-entry">
+  <span class="pub-tag">[P4]</span>
+  <div class="pub-content">
+    Kuzayet, B. G., <strong>Eje, O. H.</strong>, and Bala, J. A. "Benchmarking Classification Performance for Binary-Class Fault Detection Under Real-World Imbalanced Data Conditions."
+    <span class="pub-venue"><em>Deep Learning IndabaX Nigeria 2026</em>; <em>PyCon Africa 2026</em>, Kampala, Uganda.</span>
   </div>
 </div>
 
@@ -327,6 +342,12 @@ The roles below is that conviction made concrete.
     <div class="slide">
       <img src="/images/community/millennium-3.jpg" alt="Reach and Rise outreach session" />
     </div>
+    <div class="slide">
+      <img src="/images/community/millennium-4.jpg" alt="Reach and Rise outreach session" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/millennium-5.jpg" alt="Reach and Rise outreach session" />
+    </div>
   </div>
   <button class="slide-btn prev" onclick="changeSlide('millennium', -1)">&#10094;</button>
   <button class="slide-btn next" onclick="changeSlide('millennium', 1)">&#10095;</button>
@@ -334,6 +355,8 @@ The roles below is that conviction made concrete.
     <span class="dot active" onclick="goToSlide('millennium', 0)"></span>
     <span class="dot" onclick="goToSlide('millennium', 1)"></span>
     <span class="dot" onclick="goToSlide('millennium', 2)"></span>
+    <span class="dot" onclick="goToSlide('millennium', 3)"></span>
+    <span class="dot" onclick="goToSlide('millennium', 4)"></span>
   </div>
 </div>
 
