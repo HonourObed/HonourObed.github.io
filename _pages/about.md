@@ -58,61 +58,69 @@ Long term, I intend to contribute to the frontiers of robotics generalization an
 
 # Publications
 
-<p style="color: #7a8288; font-size: 0.9em;">[C] Conference paper &nbsp;·&nbsp; [W] Workshop paper</p>
+<p style="color: #7a8288; font-size: 0.9em;">[C] Conference paper &nbsp;·&nbsp; [W] Workshop paper &nbsp;·&nbsp; [R] In review</p>
+
+<div class="pub-entry">
+  <span class="pub-tag">[W1]</span>
+  <div class="pub-content">
+    <span class="pub-title">Onyenweaku, C.<sup>†</sup>, Adele, T.<sup>†</sup>, Abdulkareem, S.<sup>†</sup>, and <b>Eje, O. H.</b><sup>†</sup> "Occlusion for Free: Detecting Occlusion from the Disagreement Between Two Monocular Distance Cues."</span>
+    <span class="pub-venue"><em>NeurIPS 2026 Workshop on GlobalSouthAI.</em> [<a class="pub-link" href="https://arxiv.org/abs/2611.06899">arXiv</a>]</span>
+  </div>
+</div>
+
+<div class="pub-entry">
+  <span class="pub-tag">[R1]</span>
+  <div class="pub-content">
+    <span class="pub-title">Onyenweaku, C.<sup>†</sup>, Adele, T.<sup>†</sup>, Abdulkareem, S.<sup>†</sup>, and <b>Eje, O. H.</b><sup>†</sup> "Occlusion-Aware Object Detection for Autonomous Robots Using Monocular Depth Estimation."</span>
+    <span class="pub-venue"><em>IEEE International Conference on Robotics and Automation (ICRA) 2027</em> (in review).</span>
+  </div>
+</div>
 
 <div class="pub-entry">
   <span class="pub-tag">[C1]</span>
   <div class="pub-content">
-    <strong>Eje, O. H., Kolade, O., Bagai, G., and Folorunsho, T. A. "Adaptive Low-Light Enhancement for Road Anomaly Detection: A Multi-Architecture Benchmark and Edge Deployment Study."</strong>
-    <span class="pub-venue">IEEE NigerCON 2026.</span>
+    <span class="pub-title"><b>Eje, O. H.</b>, Kolade, O., Bagai, G., and Folorunso, T. A. "Adaptive Low-Light Enhancement for Road Anomaly Detection: A Multi-Architecture Benchmark and Edge Deployment Study."</span>
+    <span class="pub-venue"><em>IEEE NigerCON 2026.</em> <a href="https://drive.google.com/file/d/1tcSg9jc_EM4I4RdVFyO8fQqzkthB4nv4/view?usp=sharing">Paper</a></span>
   </div>
 </div>
 
 <div class="pub-entry">
   <span class="pub-tag">[C2]</span>
   <div class="pub-content">
-    <strong>Eje, O. H., Abolarinwa, S., Kolade, O., Bagai, G., and Bala, J. A. "Comparative Evaluation of Nav2 Path-Planning Algorithms for Autonomous Emergency-Response Navigation on a Real Nigerian Urban Road Network."</strong>
-    <span class="pub-venue">IEEE NigerCON 2026.</span>
+    <span class="pub-title"><b>Eje, O. H.</b>, Abolarinwa, S., Kolade, O., Bagai, G., and Bala, J. A. "Comparative Evaluation of Nav2 Path-Planning Algorithms for Autonomous Emergency-Response Navigation on a Real Nigerian Urban Road Network."</span>
+    <span class="pub-venue"><em>IEEE NigerCON 2026.</em> <a href="https://drive.google.com/file/d/16MTeGeEdERWGU141Y-4KLgISlg2brtCm/view?usp=sharing">Paper</a></span>
   </div>
 </div>
 
 <div class="pub-entry">
   <span class="pub-tag">[C3]</span>
   <div class="pub-content">
-    <strong>Bagai, G., Kolade, O., Eje, O. H., and Oyedare, A. "Domain-Shift-Aware Parameter-Efficient Fine-Tuning for Malaria Detection in Low-Resource Clinical Settings."</strong>
-    <span class="pub-venue">IEEE NigerCON 2026.</span>
+    <span class="pub-title">Kuzayet, B. G., <b>Eje, O. H.</b>, and Bala, J. A. "Benchmarking Classification Performance for Binary-Class Fault Detection Under Real-World Imbalanced Data Conditions."</span>
+    <span class="pub-venue"><em>Proceedings of IndabaX Nigeria 2026: Building Scalable AI That Works</em>, PMLR 319:278–292, 2026. [<a class="pub-link" href="https://proceedings.mlr.press/v319/kuzayet26a.html">Paper</a>]</span>
   </div>
 </div>
 
 <div class="pub-entry">
   <span class="pub-tag">[C4]</span>
   <div class="pub-content">
-    <strong>Kolade, O., Oyedare, A., Bagai, G., and Eje, O. H. "Benchmarking Machine Learning Models for Contact Force Level Estimation in Tendon-Driven Continuum Robots."</strong>
-    <span class="pub-venue">IEEE NigerCON 2026.</span>
+    <span class="pub-title">Bagai, G., Kolade, O., <b>Eje, O. H.</b>, and Oyedare, A. "Domain-Shift-Aware Parameter-Efficient Fine-Tuning for Malaria Detection in Low-Resource Clinical Settings."</span>
+    <span class="pub-venue"><em>IEEE NigerCON 2026.</em> <a href="https://drive.google.com/file/d/1UjDR6IQAzypk_46B5euI8H2AfSNh__fO/view?usp=sharing">Paper</a></span>
   </div>
 </div>
 
 <div class="pub-entry">
   <span class="pub-tag">[C5]</span>
   <div class="pub-content">
-    <strong>Oyedare, A., Kolade, O., Bagai, G., and Eje, O. H. "A Two-Layer Hierarchical Gating Architecture for SLAM Optimization: Rare-Event Shielding and Contextual-Bandit Policy Design on the LHSI-50M Benchmark."</strong>
-    <span class="pub-venue">IEEE NigerCON 2026.</span>
+    <span class="pub-title">Kolade, O., Oyedare, A., Bagai, G., and <b>Eje, O. H.</b> "Benchmarking Machine Learning Models for Contact Force Level Estimation in Tendon-Driven Continuum Robots."</span>
+    <span class="pub-venue"><em>IEEE NigerCON 2026.</em> <a href="https://drive.google.com/file/d/182M7Nr8nVcB_37UDKJat2CPXJKaFRKze/view?usp=sharing">Paper</a></span>
   </div>
 </div>
 
 <div class="pub-entry">
   <span class="pub-tag">[C6]</span>
   <div class="pub-content">
-    <strong>Kuzayet, B. G., Eje, O. H., and Bala, J. A. "Benchmarking Classification Performance for Binary-Class Fault Detection Under Real-World Imbalanced Data Conditions."</strong>
-    <span class="pub-venue"><a href="https://proceedings.mlr.press/v319/">Proceedings of IndabaX Nigeria 2026: Building Scalable AI That Works</a>, PMLR 319:278–292, 2026.</span>
-  </div>
-</div>
-
-<div class="pub-entry">
-  <span class="pub-tag">[W1]</span>
-  <div class="pub-content">
-    <strong>Onyenweaku, C.<sup>†</sup>, Adele, T.<sup>†</sup>, Abdulkareem, S.<sup>†</sup>, and Eje, O. H.<sup>†</sup> <em>(title withheld under review).</em></strong>
-    <span class="pub-venue">NeurIPS 2026 Workshop on GlobalSouthAI. <em>Under review.</em></span>
+    <span class="pub-title">Oyedare, A., Kolade, O., Bagai, G., and <b>Eje, O. H.</b> "A Two-Layer Hierarchical Gating Architecture for SLAM Optimization: Rare-Event Shielding and Contextual-Bandit Policy Design on the LHSI-50M Benchmark."</span>
+    <span class="pub-venue"><em>IEEE NigerCON 2026.</em> <a href="https://drive.google.com/file/d/1-XxaEuNwalO98s4bWm-JcDKZPp1Hf7Ao/view?usp=sharing">Paper</a></span>
   </div>
 </div>
 
@@ -210,7 +218,6 @@ The roles below is that conviction made concrete.
     <span class="dot" onclick="goToSlide('ieee', 1)"></span>
     <span class="dot" onclick="goToSlide('ieee', 2)"></span>
     <span class="dot" onclick="goToSlide('ieee', 3)"></span>
-    <span class="dot" onclick="goToSlide('ieee', 4)"></span>
   </div>
 </div>
 
@@ -255,7 +262,6 @@ The roles below is that conviction made concrete.
     <span class="dot" onclick="goToSlide('matlab', 3)"></span>
     <span class="dot" onclick="goToSlide('matlab', 4)"></span>
     <span class="dot" onclick="goToSlide('matlab', 5)"></span>
-    <span class="dot" onclick="goToSlide('matlab', 6)"></span>
   </div>
 </div>
 
@@ -296,7 +302,6 @@ The roles below is that conviction made concrete.
     <span class="dot" onclick="goToSlide('waaw', 2)"></span>
     <span class="dot" onclick="goToSlide('waaw', 3)"></span>
     <span class="dot" onclick="goToSlide('waaw', 4)"></span>
-    <span class="dot" onclick="goToSlide('waaw', 5)"></span>
   </div>
 </div>
 
@@ -304,6 +309,38 @@ The roles below is that conviction made concrete.
   <p>Co-coordinated 25 outreach programmes across secondary schools and underserved communities in Niger State during the 2025/2026 session, reaching approximately 2,000 children and young people with hands-on STEM education, mentorship, scholarship guidance, and engineering project work — from Arduino programming and sensor integration to AI demonstrations with Teachable Machine.</p>
   <p>Built and sustained partnerships with schools, professional bodies, and university organisations including SPE FUTMinna, APWEN, and IEEE, expanding the chapter's technical capacity and community reach across multiple programme formats: bootcamps, school visits, energy education weeks, and a full summer STEM programme.</p>
   <p>The chapter's sustained impact was recognised at the international level: Chapter of the Month (April 2026), Best Partnership Chapter for the first half of 2026 (July 2026), and the Most Active Community Impact Partner Award from SPE FUTMinna; the latter recognising consistent contribution to student and community development across the full session.</p>
+</div>
+
+---
+
+## Millennium Fellowship, Class of 2026
+### Millennium Fellow &nbsp;·&nbsp; <span style="color: #800020;">2026</span>
+
+<div class="slideshow-container" data-id="millennium">
+  <div class="slides-wrapper">
+    <div class="slide active">
+      <img src="/images/community/millennium-1.jpg" alt="Reach and Rise outreach session" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/millennium-2.jpg" alt="Reach and Rise outreach session" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/millennium-3.jpg" alt="Reach and Rise outreach session" />
+    </div>
+  </div>
+  <button class="slide-btn prev" onclick="changeSlide('millennium', -1)">&#10094;</button>
+  <button class="slide-btn next" onclick="changeSlide('millennium', 1)">&#10095;</button>
+  <div class="slide-dots">
+    <span class="dot active" onclick="goToSlide('millennium', 0)"></span>
+    <span class="dot" onclick="goToSlide('millennium', 1)"></span>
+    <span class="dot" onclick="goToSlide('millennium', 2)"></span>
+  </div>
+</div>
+
+<div class="community-entry">
+  <p>Delivered Reach and Rise Educational Outreach with a team of fellow Millennium Fellows, bringing career guidance, health education, and digital skills to about 150 primary and secondary pupils in underserved schools; the sessions covered career development, health, and digital technology and AI with printed learning posters left behind in classrooms.</p>
+  <p>Built the programme with Brainstorm Group (BSG), Oyins Educational Foundation, and THRIVE (Transformative Health through Responsibility, Innovation, Vision and Empowerment), pairing each partner's strength with a part of the curriculum so that the sessions reached pupils as a coherent programme rather than a set of separate visits.</p>
+  <p>The Millennium Fellowship is a global leadership programme run by the United Nations Academic Impact and the Millennium Campus Network; the Class of 2026 was selected from more than 60,000 applicants across 150+ countries.</p>
 </div>
 
 <style>
@@ -395,9 +432,10 @@ The roles below is that conviction made concrete.
 
 <script>
 const slideshows = {
-  ieee:   { current: 0, total: 4, timer: null },
-  matlab: { current: 0, total: 6, timer: null },
-  waaw:   { current: 0, total: 5, timer: null }
+  ieee:       { current: 0, total: 4, timer: null },
+  matlab:     { current: 0, total: 6, timer: null },
+  waaw:       { current: 0, total: 5, timer: null },
+  millennium: { current: 0, total: 4, timer: null }
 };
 
 function getContainer(id) {

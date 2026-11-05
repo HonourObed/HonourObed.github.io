@@ -355,6 +355,29 @@ b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a,
   font-size: $type-size-6;
 }
 
+.pub-entry .pub-content .pub-title {
+  display: block;
+  margin-bottom: 0.15em;
+}
+
+.pub-link {
+  display: inline-block;
+  margin-left: 0.4em;
+  font-size: 0.8em;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $burgundy;
+  border-bottom: 2px solid $burgundy;
+  line-height: 1.2;
+}
+
+.pub-link:hover {
+  color: mix(#000, $burgundy, 25%);
+  border-bottom-color: mix(#000, $burgundy, 25%);
+}
+
 /* Section headings accent */
 h1 {
   border-bottom: 2px solid $burgundy;
