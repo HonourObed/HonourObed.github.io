@@ -346,6 +346,12 @@ The roles below is that conviction made concrete.
     <div class="slide">
       <img src="/images/community/millennium-5.jpg" alt="Reach and Rise outreach session" />
     </div>
+        <div class="slide">
+      <img src="/images/community/millennium-6.jpg" alt="Reach and Rise outreach session" />
+    </div>
+    <div class="slide">
+      <img src="/images/community/millennium-7.jpg" alt="Reach and Rise outreach session" />
+    </div>
   </div>
   <button class="slide-btn prev" onclick="changeSlide('millennium', -1)">&#10094;</button>
   <button class="slide-btn next" onclick="changeSlide('millennium', 1)">&#10095;</button>
@@ -355,6 +361,8 @@ The roles below is that conviction made concrete.
     <span class="dot" onclick="goToSlide('millennium', 2)"></span>
     <span class="dot" onclick="goToSlide('millennium', 3)"></span>
     <span class="dot" onclick="goToSlide('millennium', 4)"></span>
+    <span class="dot" onclick="goToSlide('millennium', 5)"></span>
+    <span class="dot" onclick="goToSlide('millennium', 6)"></span>
   </div>
 </div>
 
